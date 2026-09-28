@@ -1,0 +1,21 @@
+INFORMACIÓN TÉCNICA Y COMPATIBILIDAD — IPHONE (iOS)
+===================================================
+
+1. COMPATIBILIDAD DE ARCHIVOS APK EN IPHONE:
+   Los iPhone (sistema operativo Apple iOS) NO admiten ni pueden ejecutar archivos .APK.
+   El formato .APK es exclusivo de Android (Java/Dalvik/ART).
+   Apple no permite instalar APKs bajo ninguna circunstancia.
+
+2. CÓMO FUNCIONA EL DESPLIEGUE EN IPHONE (APPLE):
+   Para que un iPhone ejecute una aplicación nativa, Apple exige:
+   a) Compilación en formato .IPA (requiere obligatoriamente una computadora Mac con Xcode).
+   b) Firma digital corporativa con una cuenta oficial de Apple Developer Program ($99 USD/año).
+   c) Distribución mediante TestFlight o certificado Ad-Hoc/MDM corporativo.
+   Desde un entorno Windows no es posible generar un binario nativo firmado para iOS.
+
+3. SOLUCIÓN DIRECTA PARA USUARIOS DE IPHONE (WEB APP / PWA):
+   La arquitectura Flutter del proyecto permite compilar y servir la aplicación en formato Web.
+   De esta forma:
+   - El usuario de iPhone abre Safari en http://192.168.0.126:5000 (o la URL de red de la empresa).
+   - Toca "Compartir" en Safari -> "Agregar a pantalla de inicio".
+   - Le queda un ícono directo idéntico a la app nativa, con cámara, escaneo y conexión directa sin requerir certificados de Apple ni archivos externos.

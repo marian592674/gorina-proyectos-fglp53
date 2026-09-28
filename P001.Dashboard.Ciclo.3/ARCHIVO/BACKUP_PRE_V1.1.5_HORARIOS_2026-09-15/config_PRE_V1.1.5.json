@@ -1,0 +1,50 @@
+{
+    "source":  "sheet",
+    "out_path":  "D:/PROYECTOS/P001.Dashboard.Ciclo.3/PROD/dashboard/datos.json",
+    "sheet":  {
+                  "id":  "1Tme-57YZ3Zbj2-AgwrA1Ykp_LR-52ewFPanx-AMvUdk",
+                  "layout":  {
+                                 "trv":  {
+                                             "gid":  "0",
+                                             "skip":  3,
+                                             "cInn":  1,
+                                             "cOut":  2,
+                                             "cPct":  3
+                                         },
+                                 "trv2":  {
+                                              "gid":  "0",
+                                              "skip":  3,
+                                              "cInn":  4,
+                                              "cOut":  5,
+                                              "cPct":  6
+                                          },
+                                 "crane":  {
+                                               "gid":  "6245416",
+                                               "skip":  1,
+                                               "cInn":  1,
+                                               "cOut":  2,
+                                               "cPct":  5
+                                           }
+                             }
+              },
+    "sql":  {
+                "servers":  {
+                                "TRV":  "DRIVER={ODBC Driver 18 for SQL Server};SERVER=IP_O_NOMBRE_TRV;DATABASE=TU_BD;UID=tablero_ro;PWD=****;TrustServerCertificate=yes",
+                                "ALMACEN":  "DRIVER={ODBC Driver 18 for SQL Server};SERVER=IP_O_NOMBRE_ALMACEN;DATABASE=TU_BD;UID=tablero_ro;PWD=****;TrustServerCertificate=yes"
+                            },
+                "views":  {
+                              "trv":  {
+                                          "server":  "TRV",
+                                          "view":  "dbo.vw_tablero_trv1"
+                                      },
+                              "trv2":  {
+                                           "server":  "TRV",
+                                           "view":  "dbo.vw_tablero_trv2"
+                                       },
+                              "crane":  {
+                                            "server":  "ALMACEN",
+                                            "view":  "dbo.vw_tablero_almacen"
+                                        }
+                          }
+            }
+}

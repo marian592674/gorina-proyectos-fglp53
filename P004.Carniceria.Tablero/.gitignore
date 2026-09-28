@@ -1,0 +1,25 @@
+# Entorno Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+env/
+venv/
+
+# Datos y Bases SQLite
+datos/*.sqlite
+datos/*.sqlite-journal
+datos/*.sqlite-wal
+datos/*.sqlite-shm
+respaldos/
+*.sqlite
+*.sqlite.gz
+
+# Archivos de datos pesados
+*.CSV
+*.csv
+
+# Logs y Temporales
+logs/
+*.log
+_respaldo_temporal.sqlite

@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mapa de Proyectos y Flujo de Datos — Servidor FGLP53</title>
+  <style>
+    :root {
+      --gorina-red: #d9001d;
+      --gorina-red-dark: #9e0015;
+      --gorina-red-light: #e61933;
+      --gorina-red-pastel: #fef2f2;
+      --gorina-red-border: #fecaca;
+      --white: #ffffff;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #111827;
+      --text-muted: #374151;
+      --border: #e2e8f0;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+      background-color: var(--bg);
+      color: #111827;
+      line-height: 1.5;
+      padding: 24px;
+      -webkit-font-smoothing: antialiased;
+    }
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    header {
+      background: linear-gradient(135deg, #880012 0%, #b80018 35%, #d9001d 70%, #9e0015 100%);
+      color: var(--white);
+      padding: 20px 28px;
+      border-radius: 12px;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 16px rgba(185, 28, 28, 0.22), 0 1px 3px rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      border-bottom: 3px solid #6b000e;
+    }
+    .logo-container {
+      background: #ffffff;
+      padding: 8px 18px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      flex-shrink: 0;
+    }
+    .logo-img {
+      height: 44px;
+      width: auto;
+      display: block;
+    }
+    .header-text h1 {
+      font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+      font-size: 25px;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+      margin-bottom: 4px;
+      color: #ffffff;
+    }
+    .header-text p {
+      color: #ffffff;
+      opacity: 0.95;
+      font-size: 13.5px;
+      font-weight: 400;
+    }
+    
+    .grid-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 20px;
+      margin-bottom: 24px;
+    }
+    .card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 22px;
+      border: 1px solid var(--border);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+    }
+    .card h2 {
+      font-size: 17px;
+      color: #111827;
+      font-weight: 700;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 2px solid var(--gorina-red-pastel);
+      padding-bottom: 8px;
+    }
+    
+    /* Diagrama SVG */
+    .flow-container {
+      background: #ffffff;
+      padding: 24px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      margin-bottom: 24px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    }
+    .flow-container h2 {
+      font-size: 18px;
+      color: #111827;
+      font-weight: 700;
+      margin-bottom: 16px;
+      border-bottom: 2px solid var(--gorina-red-pastel);
+      padding-bottom: 8px;
+    }
+    .diagram-svg {
+      width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+    
+    /* Tablas */
+    .table-container {
+      overflow-x: auto;
+      background: #fff;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-top: 10px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      color: #111827;
+    }
+    th, td {
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--border);
+      text-align: left;
+      vertical-align: middle;
+      color: #111827;
+    }
+    th {
+      background-color: #fff1f2;
+      color: #111827;
+      font-weight: 700;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background-color: #fff5f5; }
+    
+    /* Badges con texto SIEMPRE en negro y fondos pasteles sutiles */
+    .badge {
+      display: inline-block;
+      padding: 4px 9px;
+      border-radius: 5px;
+      font-size: 11.5px;
+      font-weight: 600;
+      font-family: inherit;
+      color: #111827 !important;
+      border: 1px solid #cbd5e1;
+      background-color: #f1f5f9;
+    }
+    .badge-on { background-color: #ecfdf5; border-color: #a7f3d0; }
+    .badge-off { background-color: #fef2f2; border-color: #fecaca; }
+    .badge-db { background-color: #fff1f2; border-color: #fecaca; }
+    .badge-net { background-color: #f5f3ff; border-color: #ddd6fe; }
+    .badge-iis { background-color: #f0f9ff; border-color: #bae6fd; }
+
+    .url-link {
+      color: #111827;
+      text-decoration: underline;
+      text-decoration-color: #d9001d;
+      font-weight: 600;
+      font-family: Consolas, monospace;
+      font-size: 12.5px;
+    }
+    .url-link:hover { color: #d9001d; }
+
+    .url-sublink {
+      color: #374151;
+      text-decoration: none;
+      font-size: 11.5px;
+      font-family: Consolas, monospace;
+      display: block;
+      margin-top: 2px;
+    }
+
+    .db-tag {
+      font-family: Consolas, monospace;
+      font-size: 11.5px;
+      color: #111827;
+      font-weight: 600;
+      background: #fff1f2;
+      padding: 3px 7px;
+      border-radius: 4px;
+      border: 1px solid #fecaca;
+    }
+
+    .step-box {
+      background: #fafafa;
+      border-left: 4px solid #d9001d;
+      padding: 12px 14px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 10px;
+      font-size: 13px;
+      color: #111827;
+    }
+    .step-box strong { color: #111827; }
+
+    footer {
+      text-align: center;
+      color: #374151;
+      font-size: 12px;
+      margin-top: 24px;
+      padding: 16px;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <div class="logo-container">
+      <img src="data:image/jpeg;base64,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" alt="Gorina" class="logo-img">
+    </div>
+    <div class="header-text">
+      <h1>Mapa de Proyectos y Flujo de Datos</h1>
+      <p>Origen de Datos, Procesamiento 24/7, Bases de Datos MySQL 8.0 y Accesos Corporativos FGLP53</p>
+    </div>
+  </header>
+
+  <!-- DIAGRAMA DE FLUJO Y ARQUITECTURA SVG CON TEXTO 100% NEGRO Y FONDOS PASTELES -->
+  <div class="flow-container">
+    <h2>Esquema de Flujos: Origen de Datos → Servicios FGLP53 → MySQL 8.0 → Tableros</h2>
+    <svg class="diagram-svg" viewBox="0 0 1100 520" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 0 L 10 5 L 0 10 z" fill="#475569" />
+        </marker>
+        <marker id="arrow-red" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 0 L 10 5 L 0 10 z" fill="#d9001d" />
+        </marker>
+      </defs>
+
+      <!-- COLUMNA 1: ORIGEN DE DATOS -->
+      <g>
+        <rect x="20" y="20" width="220" height="480" rx="10" fill="#fff5f5" stroke="#fecaca" stroke-width="1.5" />
+        <text x="130" y="45" fill="#111827" font-size="13" font-weight="bold" text-anchor="middle">1. ORIGEN DE DATOS</text>
+        
+        <!-- P001 -->
+        <rect x="35" y="65" width="190" height="50" rx="6" fill="#ffffff" stroke="#cbd5e1" />
+        <text x="45" y="85" fill="#111827" font-size="11" font-weight="bold">P001 Ciclo 3</text>
+        <text x="45" y="102" fill="#111827" font-size="10">WebRH / CAPA / Excel Desposte</text>
+
+        <!-- P002 -->
+        <rect x="35" y="125" width="190" height="50" rx="6" fill="#ffffff" stroke="#cbd5e1" />
+        <text x="45" y="145" fill="#111827" font-size="11" font-weight="bold">P002 Stock Congelado</text>
+        <text x="45" y="162" fill="#111827" font-size="10">CAPA / Excel / XML Pallets</text>
+
+        <!-- P003 -->
+        <rect x="35" y="185" width="190" height="50" rx="6" fill="#ffffff" stroke="#cbd5e1" />
+        <text x="45" y="205" fill="#111827" font-size="11" font-weight="bold">P003 Pick Insumos</text>
+        <text x="45" y="222" fill="#111827" font-size="10">SAP Insumos / Android APK</text>
+
+        <!-- P004 -->
+        <rect x="35" y="245" width="190" height="50" rx="6" fill="#ffffff" stroke="#cbd5e1" />
+        <text x="45" y="265" fill="#111827" font-size="11" font-weight="bold">P004 Carnicería</text>
+        <text x="45" y="282" fill="#111827" font-size="10">Planillas Faena / CSV Diario</text>
+
+        <!-- P005 -->
+        <rect x="35" y="305" width="190" height="50" rx="6" fill="#ffffff" stroke="#cbd5e1" />
+        <text x="45" y="325" fill="#111827" font-size="11" font-weight="bold">P005 Supervisor</text>
+        <text x="45" y="342" fill="#111827" font-size="10">Pings HTTP / Tareas Windows</text>
+
+        <!-- P006 -->
+        <rect x="35" y="365" width="190" height="50" rx="6" fill="#ffffff" stroke="#cbd5e1" />
+        <text x="45" y="385" fill="#111827" font-size="11" font-weight="bold">P006 Báscula</text>
+        <text x="45" y="402" fill="#111827" font-size="10">Balanza Hacienda / Camiones</text>
+
+        <!-- P007 -->
+        <rect x="35" y="425" width="190" height="60" rx="6" fill="#ffffff" stroke="#cbd5e1" />
+        <text x="45" y="445" fill="#111827" font-size="11" font-weight="bold">P007 Stock Sistemas</text>
+        <text x="45" y="462" fill="#111827" font-size="10">Inventario IT / Periféricos</text>
+      </g>
+
+      <!-- FLECHAS COLUMNA 1 -> 2 -->
+      <line x1="240" y1="90" x2="290" y2="90" stroke="#475569" stroke-width="1.5" marker-end="url(#arrow)" />
+      <line x1="240" y1="150" x2="290" y2="150" stroke="#475569" stroke-width="1.5" marker-end="url(#arrow)" />
+      <line x1="240" y1="210" x2="290" y2="210" stroke="#475569" stroke-width="1.5" marker-end="url(#arrow)" />
+      <line x1="240" y1="270" x2="290" y2="270" stroke="#475569" stroke-width="1.5" marker-end="url(#arrow)" />
+      <line x1="240" y1="330" x2="290" y2="330" stroke="#475569" stroke-width="1.5" marker-end="url(#arrow)" />
+      <line x1="240" y1="390" x2="290" y2="390" stroke="#475569" stroke-width="1.5" marker-end="url(#arrow)" />
+      <line x1="240" y1="455" x2="290" y2="455" stroke="#475569" stroke-width="1.5" marker-end="url(#arrow)" />
+
+      <!-- COLUMNA 2: MOTORES Y SERVICIOS 24/7 EN FGLP53 -->
+      <g>
+        <rect x="295" y="20" width="240" height="480" rx="10" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5" />
+        <text x="415" y="45" fill="#111827" font-size="13" font-weight="bold" text-anchor="middle">2. SERVICIOS (FGLP53)</text>
+        
+        <rect x="310" y="65" width="210" height="50" rx="6" fill="#ffffff" stroke="#fecaca" stroke-width="1.2" />
+        <text x="320" y="85" fill="#111827" font-size="11" font-weight="bold">IIS 10 + Python Colector</text>
+        <text x="320" y="102" fill="#111827" font-size="10">Puertos 80 (Prod) y 8080 (Lab)</text>
+
+        <rect x="310" y="125" width="210" height="50" rx="6" fill="#ffffff" stroke="#fecaca" stroke-width="1.2" />
+        <text x="320" y="145" fill="#111827" font-size="11" font-weight="bold">ExportarStock.exe (.NET 8)</text>
+        <text x="320" y="162" fill="#111827" font-size="10">Puerto 8090 / Minimal API</text>
+
+        <rect x="310" y="185" width="210" height="50" rx="6" fill="#ffffff" stroke="#fecaca" stroke-width="1.2" />
+        <text x="320" y="205" fill="#111827" font-size="11" font-weight="bold">Gorina.Api.exe (.NET 8)</text>
+        <text x="320" y="222" fill="#111827" font-size="10">Puerto 5000 / API Picking</text>
+
+        <rect x="310" y="245" width="210" height="50" rx="6" fill="#ffffff" stroke="#fecaca" stroke-width="1.2" />
+        <text x="320" y="265" fill="#111827" font-size="11" font-weight="bold">Gorina.Carniceria.Api.exe</text>
+        <text x="320" y="282" fill="#111827" font-size="10">Puerto 8765 / .NET 8 API</text>
+
+        <rect x="310" y="305" width="210" height="50" rx="6" fill="#ffffff" stroke="#fecaca" stroke-width="1.2" />
+        <text x="320" y="325" fill="#111827" font-size="11" font-weight="bold">Supervisor 24-7 (PS1)</text>
+        <text x="320" y="342" fill="#111827" font-size="10">Watchdog cada 3m + SMTP</text>
+
+        <rect x="310" y="365" width="210" height="50" rx="6" fill="#ffffff" stroke="#cbd5e1" />
+        <text x="320" y="385" fill="#111827" font-size="11" font-weight="bold">Báscula Service (.NET 8)</text>
+        <text x="320" y="402" fill="#111827" font-size="10">Puerto 8095 (En diseño)</text>
+
+        <rect x="310" y="425" width="210" height="60" rx="6" fill="#ffffff" stroke="#cbd5e1" />
+        <text x="320" y="445" fill="#111827" font-size="11" font-weight="bold">Stock Sistemas API (.NET 8)</text>
+        <text x="320" y="462" fill="#111827" font-size="10">Puerto 8096 (En diseño)</text>
+      </g>
+
+      <!-- FLECHAS COLUMNA 2 -> 3 -->
+      <line x1="535" y1="90" x2="575" y2="90" stroke="#d9001d" stroke-width="1.5" marker-end="url(#arrow-red)" />
+      <line x1="535" y1="150" x2="575" y2="150" stroke="#d9001d" stroke-width="1.5" marker-end="url(#arrow-red)" />
+      <line x1="535" y1="210" x2="575" y2="210" stroke="#d9001d" stroke-width="1.5" marker-end="url(#arrow-red)" />
+      <line x1="535" y1="270" x2="575" y2="270" stroke="#d9001d" stroke-width="1.5" marker-end="url(#arrow-red)" />
+      <line x1="535" y1="330" x2="575" y2="330" stroke="#d9001d" stroke-width="1.5" marker-end="url(#arrow-red)" />
+      <line x1="535" y1="390" x2="575" y2="390" stroke="#d9001d" stroke-width="1.5" marker-end="url(#arrow-red)" />
+      <line x1="535" y1="455" x2="575" y2="455" stroke="#d9001d" stroke-width="1.5" marker-end="url(#arrow-red)" />
+
+      <!-- COLUMNA 3: BASES DE DATOS MYSQL 8.0 LOCAL -->
+      <g>
+        <rect x="580" y="20" width="235" height="480" rx="10" fill="#fff5f5" stroke="#fecaca" stroke-width="1.5" />
+        <text x="697" y="45" fill="#111827" font-size="13" font-weight="bold" text-anchor="middle">3. MYSQL 8.0 (127.0.0.1)</text>
+
+        <rect x="595" y="65" width="205" height="50" rx="6" fill="#ffffff" stroke="#fecaca" />
+        <text x="605" y="85" fill="#111827" font-size="11" font-weight="bold">p001.dashboard.ciclo.3</text>
+        <text x="605" y="102" fill="#111827" font-size="10">Métricas, desposte, turnos</text>
+
+        <rect x="595" y="125" width="205" height="50" rx="6" fill="#ffffff" stroke="#fecaca" />
+        <text x="605" y="145" fill="#111827" font-size="11" font-weight="bold">p002.stock.almacen.congelado</text>
+        <text x="605" y="162" fill="#111827" font-size="10">Catálogo SKUs, cargas, stock</text>
+
+        <rect x="595" y="185" width="205" height="50" rx="6" fill="#ffffff" stroke="#fecaca" />
+        <text x="605" y="205" fill="#111827" font-size="11" font-weight="bold">p003.pick.materiales.insumos</text>
+        <text x="605" y="222" fill="#111827" font-size="10">Artículos, stock almacén, picks</text>
+
+        <rect x="595" y="245" width="205" height="50" rx="6" fill="#ffffff" stroke="#fecaca" />
+        <text x="605" y="265" fill="#111827" font-size="11" font-weight="bold">p004.carniceria.tablero</text>
+        <text x="605" y="282" fill="#111827" font-size="10">Faena, cortes, stock carnicería</text>
+
+        <rect x="595" y="305" width="205" height="50" rx="6" fill="#ffffff" stroke="#fecaca" />
+        <text x="605" y="325" fill="#111827" font-size="11" font-weight="bold">p005.supervisor.general</text>
+        <text x="605" y="342" fill="#111827" font-size="10">Incidentes, servicios, pings</text>
+
+        <rect x="595" y="365" width="205" height="50" rx="6" fill="#ffffff" stroke="#cbd5e1" />
+        <text x="605" y="385" fill="#111827" font-size="11" font-weight="bold">p006.bascula</text>
+        <text x="605" y="402" fill="#111827" font-size="10">Pesajes, camiones, hacienda</text>
+
+        <rect x="595" y="425" width="205" height="60" rx="6" fill="#ffffff" stroke="#cbd5e1" />
+        <text x="605" y="445" fill="#111827" font-size="11" font-weight="bold">p007.stock.sistemas</text>
+        <text x="605" y="462" fill="#111827" font-size="10">Hardware, licencias, stock IT</text>
+      </g>
+
+      <!-- FLECHAS COLUMNA 3 -> 4 -->
+      <line x1="815" y1="90" x2="855" y2="90" stroke="#d9001d" stroke-width="1.5" marker-end="url(#arrow-red)" />
+      <line x1="815" y1="150" x2="855" y2="150" stroke="#d9001d" stroke-width="1.5" marker-end="url(#arrow-red)" />
+      <line x1="815" y1="210" x2="855" y2="210" stroke="#d9001d" stroke-width="1.5" marker-end="url(#arrow-red)" />
+      <line x1="815" y1="270" x2="855" y2="270" stroke="#d9001d" stroke-width="1.5" marker-end="url(#arrow-red)" />
+      <line x1="815" y1="330" x2="855" y2="330" stroke="#d9001d" stroke-width="1.5" marker-end="url(#arrow-red)" />
+      <line x1="815" y1="390" x2="855" y2="390" stroke="#d9001d" stroke-width="1.5" marker-end="url(#arrow-red)" />
+      <line x1="815" y1="455" x2="855" y2="455" stroke="#d9001d" stroke-width="1.5" marker-end="url(#arrow-red)" />
+
+      <!-- COLUMNA 4: ACCESO CORPORATIVO (FGLP53) -->
+      <g>
+        <rect x="860" y="20" width="220" height="480" rx="10" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5" />
+        <text x="970" y="45" fill="#111827" font-size="13" font-weight="bold" text-anchor="middle">4. ACCESO (FGLP53)</text>
+
+        <rect x="870" y="65" width="200" height="50" rx="6" fill="#ffffff" stroke="#cbd5e1" />
+        <text x="880" y="85" fill="#111827" font-size="11" font-weight="bold">fglp53/tablero.ciclo3/</text>
+        <text x="880" y="102" fill="#111827" font-size="10">http://fglp53:8080 (Lab)</text>
+
+        <rect x="870" y="125" width="200" height="50" rx="6" fill="#ffffff" stroke="#cbd5e1" />
+        <text x="880" y="145" fill="#111827" font-size="11" font-weight="bold">fglp53:8090/stock_almacen</text>
+        <text x="880" y="162" fill="#111827" font-size="10">SPA + Fast CSV Stream</text>
+
+        <rect x="870" y="185" width="200" height="50" rx="6" fill="#ffffff" stroke="#cbd5e1" />
+        <text x="880" y="205" fill="#111827" font-size="11" font-weight="bold">fglp53:5000/api/materiales</text>
+        <text x="880" y="222" fill="#111827" font-size="10">Consumo APK Picking</text>
+
+        <rect x="870" y="245" width="200" height="50" rx="6" fill="#ffffff" stroke="#cbd5e1" />
+        <text x="880" y="265" fill="#111827" font-size="11" font-weight="bold">fglp53:8765/tablero_carniceria</text>
+        <text x="880" y="282" fill="#111827" font-size="10">Tablero TV Producción</text>
+
+        <rect x="870" y="305" width="200" height="50" rx="6" fill="#ffffff" stroke="#cbd5e1" />
+        <text x="880" y="325" fill="#111827" font-size="11" font-weight="bold">fglp53 (Panel de Alertas)</text>
+        <text x="880" y="342" fill="#111827" font-size="10">2_VER_ESTADO_ALERTAS.bat</text>
+
+        <rect x="870" y="365" width="200" height="50" rx="6" fill="#ffffff" stroke="#cbd5e1" />
+        <text x="880" y="385" fill="#111827" font-size="11" font-weight="bold">fglp53:8095/bascula</text>
+        <text x="880" y="402" fill="#111827" font-size="10">Próxima implementación</text>
+
+        <rect x="870" y="425" width="200" height="60" rx="6" fill="#ffffff" stroke="#cbd5e1" />
+        <text x="880" y="445" fill="#111827" font-size="11" font-weight="bold">fglp53:8096/stock_sistemas</text>
+        <text x="880" y="462" fill="#111827" font-size="10">Próxima implementación</text>
+      </g>
+    </svg>
+  </div>
+
+  <!-- TABLA MAESTRA DETALLADA -->
+  <div class="card" style="margin-bottom: 24px;">
+    <h2>Matriz Maestra de Aplicaciones, Bases de Datos y Accesos FGLP53</h2>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Proyecto</th>
+            <th>Origen de Datos</th>
+            <th>Base de Datos MySQL</th>
+            <th>Dirección de Acceso Corporativo (`FGLP53`)</th>
+            <th>Motor / Backend</th>
+            <th>Auto-Inicio 24/7</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>P001.Dashboard.Ciclo.3</strong></td>
+            <td>WebRH / CAPA / Excel Desposte</td>
+            <td><span class="db-tag">p001.dashboard.ciclo.3</span></td>
+            <td>
+              <a class="url-link" href="http://fglp53/tablero.ciclo3/dashboard_operaciones.html" target="_blank">http://fglp53/tablero.ciclo3/</a>
+              <span class="url-sublink">http://fglp53:8080 (Laboratorio)</span>
+            </td>
+            <td><span class="badge badge-iis">IIS 10 + Python</span></td>
+            <td><span class="badge badge-on">W3SVC + Colector</span></td>
+          </tr>
+          <tr>
+            <td><strong>P002.Stock.Almacen.Congelado</strong></td>
+            <td>CAPA / Catálogo SKUs / XML Pallets</td>
+            <td><span class="db-tag">p002.stock.almacen.congelado</span></td>
+            <td>
+              <a class="url-link" href="http://fglp53:8090/stock_almacen" target="_blank">http://fglp53:8090/stock_almacen</a>
+              <span class="url-sublink">http://fglp53:8090/stock_almacen/ping</span>
+            </td>
+            <td><span class="badge badge-net">C# .NET 8</span></td>
+            <td><span class="badge badge-on">AtStartup</span></td>
+          </tr>
+          <tr>
+            <td><strong>P003.Pick.Materiales.Insumos</strong></td>
+            <td>Catálogo SAP / Insumos / APK Móvil</td>
+            <td><span class="db-tag">p003.pick.materiales.insumos</span></td>
+            <td>
+              <a class="url-link" href="http://fglp53:5000/api/materiales" target="_blank">http://fglp53:5000/api/materiales</a>
+              <span class="url-sublink">http://fglp53:5000/api/ping</span>
+            </td>
+            <td><span class="badge badge-net">C# .NET 8</span></td>
+            <td><span class="badge badge-on">AtStartup + Vigilante</span></td>
+          </tr>
+          <tr>
+            <td><strong>P004.Carniceria.Tablero</strong></td>
+            <td>Planillas Faena / CSV diario</td>
+            <td><span class="db-tag">p004.carniceria.tablero</span></td>
+            <td>
+              <a class="url-link" href="http://fglp53:8765/tablero_carniceria" target="_blank">http://fglp53:8765/tablero_carniceria</a>
+              <span class="url-sublink">http://fglp53:8765/api/estado</span>
+            </td>
+            <td><span class="badge badge-net">C# .NET 8</span></td>
+            <td><span class="badge badge-on">AtStartup + Vigilante</span></td>
+          </tr>
+          <tr>
+            <td><strong>P005.Supervisor.General</strong></td>
+            <td>Pings HTTP + Tareas Windows</td>
+            <td><span class="db-tag">p005.supervisor.general</span></td>
+            <td>
+              <span class="url-link" style="text-decoration: none;">2_VER_ESTADO_DE_ALERTAS.bat</span>
+              <a class="url-sublink" href="http://fglp53/tablero.ciclo3/1_DIAGRAMA_Y_MANUAL.html" target="_blank">Manual FGLP53</a>
+            </td>
+            <td><span class="badge badge-on">PowerShell + SMTP</span></td>
+            <td><span class="badge badge-on">AtStartup + 3 min</span></td>
+          </tr>
+          <tr>
+            <td><strong>P006.Bascula</strong></td>
+            <td>Pesaje Hacienda / Balanza Camiones</td>
+            <td><span class="db-tag">p006.bascula</span></td>
+            <td>
+              <span class="url-link" style="text-decoration: none;">http://fglp53:8095/bascula</span>
+            </td>
+            <td><span class="badge badge-net">.NET 8 (En diseño)</span></td>
+            <td><span class="badge">Próximo</span></td>
+          </tr>
+          <tr>
+            <td><strong>P007.Stock.Sistemas</strong></td>
+            <td>Inventario IT / Hardware y Licencias</td>
+            <td><span class="db-tag">p007.stock.sistemas</span></td>
+            <td>
+              <span class="url-link" style="text-decoration: none;">http://fglp53:8096/stock_sistemas</span>
+            </td>
+            <td><span class="badge badge-net">.NET 8 (En diseño)</span></td>
+            <td><span class="badge">Próximo</span></td>
+          </tr>
+          <tr>
+            <td><strong>P000.Proyectos.General</strong></td>
+            <td>Auditoría y control integral P001-P007</td>
+            <td><span class="db-tag">p000.proyectos.general</span></td>
+            <td>
+              <span class="url-link" style="text-decoration: none;">http://fglp53/proyectos</span>
+            </td>
+            <td><span class="badge badge-db">Orquestador Central</span></td>
+            <td><span class="badge badge-on">Activo</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="grid-cards">
+    <!-- TARJETA: GESTIÓN RÁPIDA -->
+    <div class="card">
+      <h2>Gestión y Operaciones Rápidas</h2>
+      <div class="step-box">
+        <strong>1. Ver Estado en Vivo: <code>2_VER_ESTADO_DE_ALERTAS.bat</code></strong><br>
+        Consulta directamente MySQL <code>p005.supervisor.general</code> mostrando el estado de todos los servicios, tiempos de respuesta e incidentes recientes.
+      </div>
+      <div class="step-box">
+        <strong>2. Enviar Alerta de Prueba: <code>5_ENVIAR_ALERTA_DE_PRUEBA.bat</code></strong><br>
+        Dispara una prueba técnica al relay corporativo <code>192.168.0.234:25</code> para validar entrega en las casillas configuradas.
+      </div>
+      <div class="step-box">
+        <strong>3. Auto-Recuperación Automática:</strong><br>
+        Si un servicio se detiene, el supervisor general ejecuta su vigilante automáticamente sin requerir intervención manual.
+      </div>
+    </div>
+
+    <!-- TARJETA: REGISTRO DE INCIDENTES RECIENTES -->
+    <div class="card" id="card-log-eventos">
+      <h2>Registro de Últimos Incidentes y Eventos (MySQL)</h2>
+      <p style="font-size: 13px; color: #374151; margin-bottom: 12px;">
+        Historial persistido en la tabla <code>incidentes</code> de la base de datos <code>p005.supervisor.general</code>:
+      </p>
+
+      <!-- INICIO_LOG_EVENTOS -->
+      <div style="overflow-x: auto; max-height: 290px; overflow-y: auto; border: 1px solid var(--border); border-radius: 8px; background: #fff;">
+        <table style="margin-top: 0; font-size: 12.5px; width: 100%;">
+          <thead>
+            <tr style="position: sticky; top: 0; background-color: #fff1f2; z-index: 1;">
+              <th style="width: 130px;">Fecha / Hora</th>
+              <th style="width: 110px; text-align: center;">Evento</th>
+              <th>Servicio / Motivo</th>
+              <th style="width: 170px;">Notificado A</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="font-family: monospace; font-size: 11.5px; color: #111827;">28/09 14:57:17</td>
+              <td style="text-align: center;"><span class="badge badge-on">RESTABLECIDO</span></td>
+              <td><strong>Infraestructura Dashboard</strong><br><span style="color: #374151; font-size: 11px;">Todos los servicios normalizados (HTTP 200 / Tareas Ready)</span></td>
+              <td style="font-size: 11.5px; color: #111827;">sistemas@friggorina.com</td>
+            </tr>
+            <tr>
+              <td style="font-family: monospace; font-size: 11.5px; color: #111827;">28/09 14:52:21</td>
+              <td style="text-align: center;"><span class="badge badge-off">ALERTA</span></td>
+              <td><strong>Stock Almacén (Puerto 8090)</strong><br><span style="color: #374151; font-size: 11px;">Falla de conexión (timed out) en http://fglp53:8090/</span></td>
+              <td style="font-size: 11.5px; color: #111827;">sistemas@friggorina.com</td>
+            </tr>
+            <tr>
+              <td style="font-family: monospace; font-size: 11.5px; color: #111827;">26/09 13:17:17</td>
+              <td style="text-align: center;"><span class="badge badge-on">RESTABLECIDO</span></td>
+              <td><strong>Infraestructura Dashboard</strong><br><span style="color: #374151; font-size: 11px;">Todos los servicios normalizados (HTTP 200 / Tareas Ready)</span></td>
+              <td style="font-size: 11.5px; color: #111827;">sistemas@friggorina.com</td>
+            </tr>
+            <tr>
+              <td style="font-family: monospace; font-size: 11.5px; color: #111827;">26/09 13:12:21</td>
+              <td style="text-align: center;"><span class="badge badge-off">ALERTA</span></td>
+              <td><strong>Stock Almacén (Puerto 8090)</strong><br><span style="color: #374151; font-size: 11px;">Falla de conexión (timed out) en http://fglp53:8090/</span></td>
+              <td style="font-size: 11.5px; color: #111827;">sistemas@friggorina.com</td>
+            </tr>
+            <tr>
+              <td style="font-family: monospace; font-size: 11.5px; color: #111827;">25/09 15:52:17</td>
+              <td style="text-align: center;"><span class="badge badge-on">RESTABLECIDO</span></td>
+              <td><strong>Infraestructura Dashboard</strong><br><span style="color: #374151; font-size: 11px;">Todos los servicios normalizados (HTTP 200 / Tareas Ready)</span></td>
+              <td style="font-size: 11.5px; color: #111827;">sistemas@friggorina.com</td>
+            </tr>
+            <tr>
+              <td style="font-family: monospace; font-size: 11.5px; color: #111827;">25/09 15:42:19</td>
+              <td style="text-align: center;"><span class="badge badge-off">ALERTA</span></td>
+              <td><strong>Acceso Red Corporativa (tablero.ciclo3)</strong><br><span style="color: #374151; font-size: 11px;">Falla de conexión (HTTP Error 500: Internal Server Error) en http://fglp53/tablero.ciclo3/</span></td>
+              <td style="font-size: 11.5px; color: #111827;">sistemas@friggorina.com</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- FIN_LOG_EVENTOS -->
+
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 12px; font-size: 12px; color: #374151;">
+        <span>Persistencia directa en MySQL <code>p005.supervisor.general</code></span>
+        <span style="font-weight: 700; color: #111827;">● Supervisor Activo 24/7</span>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    Sistema de Control y Diagnóstico Integral · Servidor FGLP53 (192.168.0.126) · MySQL 8.0 Local
+  </footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,14 @@
+{
+  "Puerto": 8080,
+  "BaseDatos": "C:\\ProgramData\\GorinaPick\\Datos\\gorina.db",
+  "CarpetaSalida": "\\\\SERVIDOR-SAP\\INTERFAZ_SAP\\CONSUMOS",
+  "ClaseMovimiento": "201",
+  "Centro": "1001",
+  "LoteDefault": "1",
+  "CabeceraEnTodasLasFilas": false,
+  "UsuarioAdminInicial": "CAMBIAR_USUARIO",
+  "PinAdminInicial": "CAMBIAR_PIN",
+  "IntervaloMonitoreoSapSegundos": 30,
+  "DiasHistorialApp": 30,
+  "CarpetaCatalogos": "C:\\ProgramData\\GorinaPick\\Catalogos"
+}

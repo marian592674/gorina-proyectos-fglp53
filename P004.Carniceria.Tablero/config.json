@@ -1,0 +1,16 @@
+{
+    "carpeta_carnisoft":  "J:\\UTIL\\USER\\CARNI_VENTA",
+    "catalogo":  "J:\\UTIL\\USER\\CARNI_VENTA\\Catalogo_Carniceria_Gorina.xlsx",
+    "historico_inicial":  "CARNICERIA 2026.CSV",
+    "base":  "D:\\GorinaData\\P004.Carniceria.Tablero\\carniceria.sqlite",
+    "respaldo":  "D:\\GorinaData\\P004.Carniceria.Tablero\\respaldos",
+    "host":  "0.0.0.0",
+    "puerto":  8765,
+    "tolerancia_historico_diferencia":  5000000000.0,
+    "db_motor":  "mysql",
+    "db_host":  "127.0.0.1",
+    "db_port":  3306,
+    "db_user":  "root",
+    "db_pass":  "gorina2025",
+    "db_name":  "P004.Carniceria.Tablero"
+}

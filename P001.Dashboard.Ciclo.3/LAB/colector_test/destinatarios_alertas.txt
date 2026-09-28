@@ -1,0 +1,14 @@
+# ==============================================================================
+# DESTINATARIOS DE ALERTAS TÉCNICAS — SERVICIOS CICLO 3 (DASHBOARD Y STOCK)
+# ==============================================================================
+# - Coloque un correo electrónico por línea.
+# - Para agregar un nuevo destinatario, simplemente escriba el correo abajo.
+# - Para pausar un correo sin borrarlo, coloque un '#' al inicio de la línea.
+# - Guarde este archivo (Ctrl + G o Archivo -> Guardar) y los cambios se aplican
+#   automáticamente en la siguiente verificación del monitor (cada 5 minutos).
+# ==============================================================================
+
+sistemas@friggorina.com
+
+# Destinatarios de contingencia (descomentar quitando el '#' si se desea activar):
+# soporte.sistemas@friggorina.com

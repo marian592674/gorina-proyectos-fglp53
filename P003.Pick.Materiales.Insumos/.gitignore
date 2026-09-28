@@ -1,0 +1,45 @@
+# IDE and OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+*.user
+*.suo
+*.log
+
+# Flutter and Android generated files
+app/.dart_tool/
+app/.flutter-plugins-dependencies
+app/build/
+app/coverage/
+app/build_*.txt
+app/android/.gradle/
+app/android/local.properties
+app/android/key.properties
+*.jks
+*.keystore
+
+# .NET generated files
+servidor/Gorina.Api/bin/
+servidor/Gorina.Api/obj/
+servidor/publicar/
+
+# Operational and private data
+servidor/Gorina.Api/config.json
+servidor/respaldo_*/
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite3
+
+# Generated releases
+*.apk
+*.aab
+*.exe
+*.pdb
+
+# Local test & utility scripts
+iniciar_servidor_oculto.ps1
+logo_b64.txt
+test_api.ps1

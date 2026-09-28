@@ -1,0 +1,68 @@
+TABLERO CARNICERÍA GORINA - PRUEBA EN VM WINDOWS
+
+Contenido
+- Tablero_Carniceria_VM.html: tablero fijo (no contiene el histórico).
+- importador.py: importa histórico y CSV de Carnisoft a SQLite.
+- servidor.py: sirve la página y los datos a los navegadores internos.
+- config.json: rutas y puerto; editar antes de ejecutar.
+- actualizar_diario.cmd: comando para el Programador de tareas.
+
+1. Copiar todos estos archivos a una carpeta de la VM, por ejemplo C:\CarniceriaTablero.
+   Copiar también CARNICERIA 2026.CSV a esa carpeta SOLO para la primera carga.
+   El catálogo ya está en J:\UTIL\USER\CARNI_VENTA\Catalogo_Carniceria_Gorina.xlsx.
+   No se modifica el archivo original de CARNICERIA 2026.CSV.
+
+2. Instalar Python 3 y desde CMD, en esa carpeta, ejecutar:
+   py -3 -m pip install -r requirements.txt
+   Si la VM ya tiene Python, validar: py -3 --version.
+
+3. Verificar que J: existe para la cuenta que ejecutará la tarea nocturna.
+   En CMD de esa misma cuenta: dir J:\UTIL\USER\CARNI_VENTA
+   Si no funciona, pedir a Sistemas la ruta UNC equivalente (\\servidor\recurso\...) y
+   reemplazar en config.json las rutas de carpeta_carnisoft y catalogo.
+   La tarea necesita lectura del CSV y catálogo, y escritura en datos, respaldos y logs.
+
+4. Antes de empezar, revisar que el archivo inicial corresponde al histórico deseado.
+   Ejecutar una sola vez: py -3 importador.py inicial
+   Este CSV cubre del 02/01 al 22/09/2026 inclusive (99.441 renglones).
+   El CSV diario del 23/09/2026 será procesado por la primera actualización nocturna.
+   ATENCIÓN: el Total General impreso del archivo histórico es $5.000.000.000
+   menor que la suma de sus renglones. Los kilos sí coinciden. La carga inicial
+   usa los importes individuales y avisa de esta diferencia; verificarla con
+   Carnisoft antes de usar los acumulados para un informe oficial.
+
+5. Probar la lectura de CSV (fuera del horario de cierre no procesa el día actual):
+   py -3 importador.py diario
+   El CSV del día solo se procesa desde las 21:00 y si el nombre marca 21:00 o más.
+   Valida catálogo, fecha y totales de kilos e importe contra Total General.
+   Si una validación falla, conserva la base anterior y deja el motivo en el log.
+   Si se reexporta el día, reemplaza ese día completo, sin sumar duplicados.
+
+6. Ejecutar iniciar_servidor.cmd y abrir en la VM http://localhost:8765/.
+   Para los demás equipos: http://NOMBRE-DE-LA-VM:8765/.
+   Sistemas debe permitir el puerto 8765 solo en la red interna autorizada.
+   El servidor de prueba no trae autenticación; no abrirlo a Internet.
+
+7. Programar actualizar_diario.cmd a las 21:30 todos los días con una cuenta
+   con permisos para esa carpeta de red y para la carpeta local del tablero.
+   En Programador de tareas: Crear tarea > Desencadenadores > Diariamente 21:30;
+   Acciones > Iniciar programa > seleccionar actualizar_diario.cmd.
+   Seleccionar 'Ejecutar tanto si el usuario inició sesión como si no'.
+   La tarea puede reintentarse al día siguiente: revisa todos los días disponibles.
+   Programar también iniciar_servidor.cmd al iniciar la VM bajo una cuenta de servicio,
+   o pedir a Sistemas que lo instale como servicio supervisado.
+
+8. Respaldos: el importador crea respaldos comprimidos diarios en respaldos y
+   conserva los últimos 14 días allí para limitar espacio. Sistemas debe copiar
+   esos respaldos a almacenamiento independiente de la VM; es indispensable para
+   preservar el histórico cuando los archivos de Carnisoft caduquen a los 90 días.
+
+Notas
+- El HTML permanece fijo. El navegador solicita los datos al servidor al abrirlo
+  o al pulsar 'Actualizar datos'. Para conservar los análisis de v15, esta
+  primera versión envía todos los renglones de la base al abrir el tablero.
+  Habrá que paginar o resumir las consultas si el volumen futuro lo requiere.
+- La hoja Hoja2 del catálogo debe mantener Código, Produ, Agrupa, Apertura,
+  Grupo e IVA; el código no puede estar duplicado. Un IVA vacío bloquea la
+  carga de ese producto y exige revisión. No se adivinan tasas de IVA.
+- Conservar el archivo original de cada día por el plazo disponible de 90 días.

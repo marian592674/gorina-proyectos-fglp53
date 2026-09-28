@@ -1,0 +1,4 @@
+# Destinatarios Informes Ciclo 3 - LAB :8080
+# Formato: un mail por linea, sin comas. Lineas que empiezan con # son comentarios.
+informes.ciclo3@friggorina.com
+

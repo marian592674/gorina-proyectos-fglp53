@@ -1,0 +1,15 @@
+{
+  "Puerto": 5000,
+  "BaseDatos": "gorina.db",
+  "CarpetaSalida": "C:\\INTERFAZ_SAP\\CONSUMOS",
+  "ClaseMovimiento": "201",
+  "Centro": "1001",
+  "LoteDefault": "1",
+  "CabeceraEnTodasLasFilas": false,
+  "PrefijoNombre": "PICKQUIM",
+  "UsuarioAdminInicial": "admin",
+  "PinAdminInicial": "CAMBIAR_AL_INSTALAR",
+  "IntervaloMonitoreoSapSegundos": 30,
+  "DiasHistorialApp": 30,
+  "CarpetaCatalogos": "Catalogos"
+}

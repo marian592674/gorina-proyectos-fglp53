@@ -1,0 +1,96 @@
+{
+    "source":  "sheet",
+    "out_path":  "D:/PROYECTOS/P001.Dashboard.Ciclo.3/LAB/dashboard_test/datos.json",
+    "sheet":  {
+                  "id":  "1Tme-57YZ3Zbj2-AgwrA1Ykp_LR-52ewFPanx-AMvUdk",
+                  "layout":  {
+                                 "trv":  {
+                                             "gid":  "0",
+                                             "skip":  3,
+                                             "cInn":  1,
+                                             "cOut":  2,
+                                             "cPct":  3
+                                         },
+                                 "trv2":  {
+                                              "gid":  "0",
+                                              "skip":  3,
+                                              "cInn":  4,
+                                              "cOut":  5,
+                                              "cPct":  6
+                                          },
+                                 "crane":  {
+                                               "gid":  "6245416",
+                                               "skip":  1,
+                                               "cInn":  1,
+                                               "cOut":  2,
+                                               "cPct":  5
+                                           }
+                             }
+              },
+    "sql":  {
+                "servers":  {
+                                "TRV":  "DRIVER={ODBC Driver 18 for SQL Server};SERVER=IP_O_NOMBRE_TRV;DATABASE=TU_BD;UID=tablero_ro;PWD=****;TrustServerCertificate=yes",
+                                "ALMACEN":  "DRIVER={ODBC Driver 18 for SQL Server};SERVER=IP_O_NOMBRE_ALMACEN;DATABASE=TU_BD;UID=tablero_ro;PWD=****;TrustServerCertificate=yes"
+                            },
+                "views":  {
+                              "trv":  {
+                                          "server":  "TRV",
+                                          "view":  "dbo.vw_tablero_trv1"
+                                      },
+                              "trv2":  {
+                                           "server":  "TRV",
+                                           "view":  "dbo.vw_tablero_trv2"
+                                       },
+                              "crane":  {
+                                            "server":  "ALMACEN",
+                                            "view":  "dbo.vw_tablero_almacen"
+                                        }
+                          }
+            },
+    "mysql":  {
+                  "servers":  {
+                                  "TRV":  {
+                                              "host":  "192.168.0.162",
+                                              "port":  3306,
+                                              "database":  "p003148",
+                                              "user":  "TABLERO_RO",
+                                              "password":  "GORINA2026!"
+                                          }
+                              },
+                  "views":  {
+                                "trv":  {
+                                            "server":  "TRV",
+                                            "query":  "SELECT fecha, ingresos, salidas, ocupacion FROM p003148.vw_tablero_trv1 WHERE fecha >= '2026-09-02' ORDER BY fecha"
+                                        },
+                                "trv2":  {
+                                             "server":  "TRV",
+                                             "query":  "SELECT fecha, ingresos, salida, acupacion FROM p003148.vw_tablero_trv2 WHERE fecha >= '2026-09-02' ORDER BY fecha"
+                                         }
+                            }
+              },
+    "ctto":  {
+                 "base_url":  "http://fglp39v2:5000",
+                 "alt_url":  "http://192.168.0.164:5000",
+                 "endpoint":  "/stacker-1/api/operations/metrics/summary",
+                 "start_date":  "2026-09-02",
+                 "timeout":  10
+             },
+    "source_hybrid":  {
+                          "trv":  "mysql",
+                          "trv2":  "mysql",
+                          "crane":  "ctto"
+                      },
+    "mail":  {
+                 "monthly_subject":  "Informe Mensual Ciclo 3",
+                 "monthly_to":  [
+                                    "informes.ciclo3@friggorina.com"
+                                ],
+                 "weekly_to":  [
+                                   "informes.ciclo3@friggorina.com"
+                               ],
+                 "weekly_subject":  "Informe Semanal Ciclo 3",
+                 "smtp_host":  "192.168.0.234",
+                 "smtp_port":  25,
+                 "from":  "ciclo3@friggorina.com"
+             }
+}

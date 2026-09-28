@@ -1,0 +1,14 @@
+INSTRUCCIONES DE INSTALACIÓN — ANDROID
+=======================================
+Archivo: GorinaPick_v1.0_Android.apk
+Compatibilidad: Android 5.0 o superior (arm64, armeabi-v7a, x86_64)
+
+PASOS:
+1. Copiar este archivo APK al teléfono (vía WhatsApp, Drive, cable USB o carpeta compartida de red).
+2. Abrir el archivo en el teléfono y seleccionar "Instalar".
+   (Si el teléfono solicita permisos, habilitar "Permitir desde esta fuente" o "Instalar apps desconocidas").
+3. Abrir la app GorinaPick.
+4. En la pantalla de login, tocar el botón "Servidor" (abajo a la derecha) y colocar:
+   http://192.168.0.126:5000
+   (o la IP fija del servidor en la red de Gorina).
+5. Iniciar sesión con usuario: admin | PIN: 1234.

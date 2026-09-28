@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tablero Comercial Carnicería Gorina</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/estilos.css?v=2.7.6">
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <div class="brand-logo">G</div>
+    <div>
+      <div class="brand-title-wrap">
+        <h1>Tablero Comercial Carnicería Gorina</h1>
+        <span class="version-badge">v2.8.2</span>
+      </div>
+      <div class="sub">Ventas Netas · Kilos Netos · Precio $/Kg · Red Corporativa Gorina</div>
+    </div>
+  </div>
+  <div class="header-actions">
+    <button class="btn-header primary" onclick="App.refreshActiveTab()">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 2v6h-6M3 12a9 9 0 0115-6.7L21 8M3 22v-6h6M21 12a9 9 0 01-15 6.7L3 16"/></svg>
+      Actualizar
+    </button>
+    <!-- Botón Descargar con menú desplegable Excel / CSV -->
+    <div class="download-dropdown-wrap" id="downloadWrap">
+      <button type="button" class="btn-header ghost" id="btnDescargar" onclick="App.toggleDownloadMenu(event)" title="Descargar datos filtrados">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+        Descargar ▾
+      </button>
+      <div class="download-popover" id="downloadPopover" hidden>
+        <div class="download-pop-title">Descargar Datos Filtrados</div>
+        <div class="download-pop-sub">Exportar registros según los filtros y fechas seleccionadas</div>
+        <div class="download-actions">
+          <button type="button" class="btn-download-opt excel" onclick="App.downloadExport('excel')">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            <div>
+              <div>Descargar en <b>Excel (.xlsx)</b></div>
+              <div style="font-size:10.5px;color:#64748b;font-weight:400">Planilla con formato y columnas</div>
+            </div>
+          </button>
+          <button type="button" class="btn-download-opt csv" onclick="App.downloadExport('csv')">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            <div>
+              <div>Descargar en <b>CSV (.csv)</b></div>
+              <div style="font-size:10.5px;color:#64748b;font-weight:400">Texto separado por punto y coma</div>
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+    <button class="btn-header ghost" onclick="window.print()">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9V2h12v7M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2M6 14h12v8H6z"/></svg>
+      Imprimir
+    </button>
+  </div>
+</header>
+
+<div class="wrap">
+  <!-- Selector de Períodos Rápidos y Almanaque Gorina -->
+  <div class="quick-ranges-bar">
+    <div class="quick-left">
+      <span class="quick-title">Período rápido:</span>
+      <button class="range-chip" data-range="mes_actual">Mes Actual</button>
+      <button class="range-chip" data-range="mes_anterior">Mes Anterior</button>
+      <button class="range-chip" data-range="30dias">Últimos 30 días</button>
+      <button class="range-chip" data-range="anio_2026">Año 2026</button>
+      <button class="range-chip active" data-range="todo">Histórico Completo</button>
+    </div>
+    <div class="quick-right">
+      <span class="quick-title">Almanaque:</span>
+      <div class="calendar-trigger-wrap" id="calTriggerWrap">
+        <button type="button" class="calendar-btn" id="calBtn" onclick="Filtros.toggleAlmanaque(event)" title="Abrir Almanaque Gorina">
+          <span class="cal-icon">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="3" y1="10" x2="18" y2="10"/></svg>
+          </span>
+          <span class="cal-text" id="calRangeText">02/01/2026 — 23/09/2026</span>
+          <span class="cal-arrow">▾</span>
+        </button>
+
+        <!-- Popover Flotante Almanaque Gorina -->
+        <div class="calpop" id="calPopover" hidden>
+          <div class="calhead">
+            <button type="button" class="calnav" onclick="Filtros.navAlmanaque(-1, event)">❮</button>
+            <span class="caltitle" id="calTitle">Septiembre 2026</span>
+            <button type="button" class="calnav" onclick="Filtros.navAlmanaque(1, event)">❯</button>
+          </div>
+          <div class="calgrid" id="calGrid"></div>
+          <div class="cal-quick-actions">
+            <button type="button" class="cal-act" onclick="Filtros.setAlmanaqueRange('mes_actual', event)">Este Mes</button>
+            <button type="button" class="cal-act" onclick="Filtros.setAlmanaqueRange('mes_anterior', event)">Mes Anterior</button>
+            <button type="button" class="cal-act" onclick="Filtros.setAlmanaqueRange('30dias', event)">30 Días</button>
+            <button type="button" class="cal-act" onclick="Filtros.setAlmanaqueRange('todo', event)">Histórico</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Barra de Filtros Multidimensionales con 2 Botones KPI Fijos -->
+  <section class="filters">
+    <div class="filters-grid">
+      <!-- Fila 1 (4 filtros a la izquierda con su tamaño original) -->
+      <div class="filter-group pos-mat">
+        <label>Material / Producto</label>
+        <select id="fMaterial"><option value="">Todos los materiales</option></select>
+      </div>
+      <div class="filter-group pos-agr">
+        <label>Agrupa</label>
+        <select id="fAgrupa"><option value="">Todos</option></select>
+      </div>
+      <div class="filter-group pos-ape">
+        <label>Apertura</label>
+        <select id="fApertura"><option value="">Todos</option></select>
+      </div>
+      <div class="filter-group pos-tpv">
+        <label>Tipo Venta</label>
+        <select id="fTipoVenta"><option value="">Todos</option></select>
+      </div>
+
+      <!-- Fila 2 (Estado de filtros y botón limpiar en Col 1-2, Comprobante y Cliente en Col 3-4) -->
+      <div class="filter-status-area pos-status">
+        <div class="pills" id="filterPills"></div>
+        <button type="button" class="btn-clear" id="btnClearFilters" onclick="Filtros.clearAll()" title="Limpiar todos los filtros seleccionados">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
+          Limpiar filtros
+        </button>
+      </div>
+
+      <div class="filter-group pos-cmp">
+        <label>Comprobante</label>
+        <select id="fTipoComp"><option value="">Todos</option></select>
+      </div>
+      <div class="filter-group pos-cli">
+        <label>Cliente</label>
+        <select id="fCliente"><option value="">Todos los clientes</option></select>
+      </div>
+
+      <!-- 2 Botones KPIs Fijos a la derecha (Columnas 5 y 6) -->
+      <button type="button" class="btn-kpi-fixed pos-kpi1" id="btnKpiUltimoDia" onclick="App.filterToUltimoDia()" title="Clic para filtrar por el último día cargado">
+        <div class="kpi-fixed-tag">Último Día</div>
+        <div class="kpi-fixed-val" id="fixKpiDiaNeto">$ 0</div>
+        <div class="kpi-fixed-badge kg" id="fixKpiDiaKg" title="Kilos vendidos en la fecha">0 kg</div>
+        <div class="kpi-fixed-sub" id="fixKpiDiaFecha">Cargando día…</div>
+      </button>
+
+      <button type="button" class="btn-kpi-fixed pos-kpi2" id="btnKpiDiaMes" onclick="App.filterToMesEnCurso()" title="Clic para filtrar por el mes en curso">
+        <div class="kpi-fixed-tag">% Respecto al Mes</div>
+        <div class="kpi-fixed-val" id="fixKpiPct">0.0%</div>
+        <div class="kpi-fixed-badge pct" id="fixKpiPctKg" title="% de kilos respecto al mes">0.0% kg</div>
+        <div class="kpi-fixed-sub" id="fixKpiMesSub">Mes en curso</div>
+      </button>
+    </div>
+  </section>
+
+  <!-- Navegación por Pestañas Segmentadas con Líneas Laterales -->
+  <div class="tabs-nav-wrapper">
+    <div class="tabs-line"></div>
+    <nav class="tabs-container">
+      <button class="tab active" data-page="resumen">Resumen General</button>
+      <button class="tab" data-page="productos">Productos</button>
+      <button class="tab" data-page="drilldown">Drilldown Jerarquía</button>
+      <button class="tab" data-page="clientes">Clientes</button>
+      <button class="tab" data-page="tickets">Tickets y Alertas</button>
+      <button class="tab" data-page="detalle">Detalle Paginado</button>
+      <button class="tab" data-page="calidad">Calidad de Datos</button>
+    </nav>
+    <div class="tabs-line right"></div>
+  </div>
+
+  <!-- Pestaña 1: Resumen General -->
+  <section class="page active" id="resumen">
+    <!-- 1. KPIs Numéricos Principales (8 Tarjetas Simétricas) -->
+    <div class="kpis">
+      <div class="kpi">
+        <div class="kpi-tag">Venta Neta</div>
+        <div class="kpi-value" id="kVenta">$ 0</div>
+        <div class="kpi-sub">Signo neto FA / NC</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-tag">Kilos Netos</div>
+        <div class="kpi-value" id="kKg">0 kg</div>
+        <div class="kpi-sub">Volumen entregado</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-tag">Precio Promedio</div>
+        <div class="kpi-value" id="kPrecio">$ 0/kg</div>
+        <div class="kpi-sub">$ Neto / Kg Neto</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-tag">Ticket Promedio</div>
+        <div class="kpi-value" id="kTicket">$ 0</div>
+        <div class="kpi-sub">Venta / Comprobantes</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-tag">Clientes / Legajos</div>
+        <div class="kpi-value" id="kClientes">0</div>
+        <div class="kpi-sub">Clientes con compra</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-tag">Comprobantes</div>
+        <div class="kpi-value" id="kComprobantes">0</div>
+        <div class="kpi-sub">Tickets emitidos</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-tag">Notas de Crédito ($)</div>
+        <div class="kpi-value" id="kNC">$ 0</div>
+        <div class="kpi-sub">Impacto negativo</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-tag">Var. Intermensual</div>
+        <div class="kpi-value" id="kVar">—</div>
+        <div class="kpi-sub" id="kVarNote">Mes vs anterior</div>
+      </div>
+    </div>
+
+    <!-- 2. Gráfico de Evolución Temporal (Mensual / Diario) -->
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title" id="evolTitle">Evolución de Facturación Neta y Volumen</div>
+          <div class="card-sub" id="evolSubText">Barras Rojas = $ Neto · Línea Azul = Kg Netos · Clic en un período para seleccionar/deseleccionar</div>
+        </div>
+        <div class="granularity-switch">
+          <button type="button" class="btn-gran active" id="btnGranMes" onclick="App.setGranularity('mes')">Mensual</button>
+          <button type="button" class="btn-gran" id="btnGranDia" onclick="App.setGranularity('dia')">Diario</button>
+        </div>
+      </div>
+
+      <!-- Leyenda de colores para vista diaria interactiva -->
+      <div class="chart-day-legend" id="chartDayLegend" style="display:none">
+        <span class="chart-day-legend-title">Filtrar por Día:</span>
+        <button type="button" class="day-legend-pill" id="pillDay1" data-day="1" onclick="App.toggleDayOfWeek(1)" title="Seleccionar/Deseleccionar todos los Lunes">
+          <span class="day-dot" style="background:#4f46e5"></span> Lunes
+        </button>
+        <button type="button" class="day-legend-pill" id="pillDay2" data-day="2" onclick="App.toggleDayOfWeek(2)" title="Seleccionar/Deseleccionar todos los Martes">
+          <span class="day-dot" style="background:#0284c7"></span> Martes
+        </button>
+        <button type="button" class="day-legend-pill" id="pillDay3" data-day="3" onclick="App.toggleDayOfWeek(3)" title="Seleccionar/Deseleccionar todos los Miércoles">
+          <span class="day-dot" style="background:#059669"></span> Miércoles
+        </button>
+        <button type="button" class="day-legend-pill" id="pillDay4" data-day="4" onclick="App.toggleDayOfWeek(4)" title="Seleccionar/Deseleccionar todos los Jueves">
+          <span class="day-dot" style="background:#d97706"></span> Jueves
+        </button>
+        <button type="button" class="day-legend-pill" id="pillDay5" data-day="5" onclick="App.toggleDayOfWeek(5)" title="Seleccionar/Deseleccionar todos los Viernes">
+          <span class="day-dot" style="background:#e11d48"></span> Viernes
+        </button>
+        <button type="button" class="day-legend-pill" id="pillDay6" data-day="6" onclick="App.toggleDayOfWeek(6)" title="Seleccionar/Deseleccionar todos los Sábados">
+          <span class="day-dot" style="background:#7c3aed"></span> Sábado
+        </button>
+        <button type="button" class="day-legend-pill" id="pillDay0" data-day="0" onclick="App.toggleDayOfWeek(0)" title="Seleccionar/Deseleccionar todos los Domingos">
+          <span class="day-dot" style="background:#64748b"></span> Domingo
+        </button>
+      </div>
+
+      <div class="chart-container" id="chartEvol"></div>
+    </div>
+
+    <!-- 3. Rankings Top con Selección Dinámica -->
+    <div class="grid3" style="margin-top:20px;">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Top Agrupa ($)</div>
+          <div class="card-sub">Clic para seleccionar / deseleccionar (multiselección)</div>
+        </div>
+        <div class="ranking-list" id="rankingAgrupa"></div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Top Apertura ($)</div>
+          <div class="card-sub">Por desglose comercial · Clic para toggle</div>
+        </div>
+        <div class="ranking-list" id="rankingApertura"></div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Top Clientes ($)</div>
+          <div class="card-sub">Clic para seleccionar / deseleccionar (multiselección)</div>
+        </div>
+        <div class="ranking-list" id="rankingClientes"></div>
+      </div>
+    </div>
+
+    <!-- 4. Detalle de Evolución (Tabla Detallada al Final) -->
+    <div class="card" style="margin-top:20px;">
+      <div class="card-header">
+        <div class="card-title">Detalle de Evolución</div>
+        <div class="card-sub">Desglose de facturación y volumen por período</div>
+      </div>
+      <div class="table-wrap" style="margin-top:10px">
+        <table id="tableEvol"></table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pestaña 2: Productos -->
+  <section class="page" id="productos">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">Rendimiento por Desglose Comercial (Apertura)</div>
+        <div class="card-sub">Top 50 materiales por facturación</div>
+      </div>
+      <div class="table-wrap">
+        <table id="tableProductos">
+          <thead>
+            <tr>
+              <th style="width:40px">#</th>
+              <th>Apertura Comercial</th>
+              <th class="num">Venta Neta</th>
+              <th class="num">Kg Netos</th>
+              <th class="num">$/Kg Promedio</th>
+              <th class="num">Comprobantes</th>
+              <th class="num">Part. %</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pestaña 3: Drilldown Jerarquía -->
+  <section class="page" id="drilldown">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">Desglose Jerárquico: Grupo → Agrupa → Apertura</div>
+      </div>
+      <div class="table-wrap">
+        <table id="tableDrilldown">
+          <thead>
+            <tr>
+              <th>Grupo</th>
+              <th>Agrupa</th>
+              <th>Apertura</th>
+              <th class="num">Venta Neta</th>
+              <th class="num">Kg Netos</th>
+              <th class="num">$/Kg</th>
+              <th class="num">Comprobantes</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pestaña 4: Clientes -->
+  <section class="page" id="clientes">
+    <div class="grid2" style="margin-bottom:20px;">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Top Clientes por Venta Neta ($)</div>
+          <div class="card-sub">Top 10 clientes con mayor facturación</div>
+        </div>
+        <div class="ranking-list" id="chartClientesVenta"></div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Top Clientes por Kilos (kg)</div>
+          <div class="card-sub">Top 10 clientes con mayor volumen</div>
+        </div>
+        <div class="ranking-list" id="chartClientesKg"></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">Detalle de Clientes</div>
+        <div class="card-sub">Top 50 clientes ordenados por facturación</div>
+      </div>
+      <div class="table-wrap">
+        <table id="tableClientes">
+          <thead>
+            <tr>
+              <th style="width:40px">#</th>
+              <th>Cliente / Razón Social</th>
+              <th class="num">Venta Neta</th>
+              <th class="num">Kg Netos</th>
+              <th class="num">$/Kg Promedio</th>
+              <th class="num">Comprobantes</th>
+              <th class="num">Part. %</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pestaña 5: Tickets y Alertas -->
+  <section class="page" id="tickets">
+    <div class="kpis" id="ticketsKpis">
+      <div class="kpi">
+        <div class="kpi-tag">Ticket Promedio</div>
+        <div class="kpi-value" id="tKpiProm">$ 0</div>
+        <div class="kpi-sub">Venta neta / Comprobantes</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-tag">Kg Promedio</div>
+        <div class="kpi-value" id="tKpiKg">0 kg</div>
+        <div class="kpi-sub">Kilos netos / Comprobantes</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-tag">% Tickets NC</div>
+        <div class="kpi-value" id="tKpiNC">0%</div>
+        <div class="kpi-sub" id="tKpiNCPct">$ 0 en devoluciones</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-tag">Tickets Analizados</div>
+        <div class="kpi-value" id="tKpiTotal">0</div>
+        <div class="kpi-sub">Comprobantes emitidos</div>
+      </div>
+    </div>
+
+    <div class="grid2" style="margin-top:20px;">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Distribución por Tipo de Venta ($)</div>
+          <div class="card-sub">Participación por canal y modalidad</div>
+        </div>
+        <div class="ranking-list" id="chartTicketsTipoVenta"></div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Operaciones Atípicas / Alertas</div>
+          <div class="card-sub">Comprobantes con mayor importe o notas de crédito</div>
+        </div>
+        <div class="table-wrap" style="max-height:340px;overflow-y:auto;">
+          <table id="tableAlertas">
+            <thead>
+              <tr>
+                <th>Comprobante</th>
+                <th>Tipo</th>
+                <th class="num">Neto ($)</th>
+                <th class="num">Kg Netos</th>
+                <th class="num">Alerta / Estado</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="page" id="detalle">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">Libro Detallado de Ventas (Paginación Dinámica)</div>
+        <div style="display:flex;gap:10px;align-items:center">
+          <input type="text" id="searchDetail" placeholder="Buscar por comprobante, cliente o producto…" style="width:280px;height:32px">
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table id="tableDetalle">
+          <thead>
+            <tr>
+              <th>Fecha</th>
+              <th>Comprobante</th>
+              <th>Cliente</th>
+              <th>Producto</th>
+              <th>Agrupa</th>
+              <th>Apertura</th>
+              <th class="num">Kg</th>
+              <th class="num">Neto</th>
+              <th class="num">$/Kg</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <div class="pagination">
+        <div id="detailPageInfo">Cargando registros…</div>
+        <div class="pagination-controls">
+          <button class="btn-page" id="btnPrevPage">« Anterior</button>
+          <button class="btn-page" id="btnNextPage">Siguiente »</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pestaña 6: Calidad de Datos y Auditoría de Ingesta -->
+  <section class="page" id="calidad">
+    <div class="kpis">
+      <div class="kpi"><div class="kpi-tag">Total Registros</div><div class="kpi-value" id="qFilas">0</div><div class="kpi-sub">Filas en SQLite</div></div>
+      <div class="kpi"><div class="kpi-tag">Cobertura Días Hábiles</div><div class="kpi-value" id="qCobertura" style="color:var(--verde)">100%</div><div class="kpi-sub" id="qHabilesNote">Lunes a Sábado</div></div>
+      <div class="kpi"><div class="kpi-tag">Control Domingos</div><div class="kpi-value" id="qDomingos">0 ventas</div><div class="kpi-sub">100% Correcto (cerrado)</div></div>
+      <div class="kpi"><div class="kpi-tag">Feriados Nacionales</div><div class="kpi-value" id="qFeriados">0</div><div class="kpi-sub">Feriados sin actividad</div></div>
+      <div class="kpi"><div class="kpi-tag">Días Faltantes</div><div class="kpi-value" id="qFaltantes">0</div><div class="kpi-sub">Lun a Sáb sin ventas</div></div>
+      <div class="kpi"><div class="kpi-tag">Registros con #N/A</div><div class="kpi-value" id="qNA">0</div><div class="kpi-sub">Sin mapeo catálogo</div></div>
+      <div class="kpi"><div class="kpi-tag">Comprobantes NC</div><div class="kpi-value" id="qNC">0</div><div class="kpi-sub">Notas de Crédito</div></div>
+    </div>
+
+    <!-- Auditoría de Ingesta Diaria de Lunes a Sábado -->
+    <div class="card" style="margin-bottom:16px">
+      <div class="card-header">
+        <div>
+          <div class="card-title">Auditoría de Ingesta Diaria (Lunes a Sábado obligatorio · Domingos cerrado)</div>
+          <div class="card-sub" id="qAuditoriaSub">Control de integridad cronológica y detección de vacíos de datos</div>
+        </div>
+        <span class="badge-auditoria ok" id="badgeAuditoriaEstado">✓ Flujo Operativo Óptimo</span>
+      </div>
+      <div class="table-wrap">
+        <table id="tableAuditoriaDias">
+          <thead>
+            <tr>
+              <th>Fecha</th>
+              <th>Día de Semana</th>
+              <th>Tipo de Jornada</th>
+              <th>Estado Ingesta</th>
+              <th>Observación</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">Renglones con Clasificación Incompleta (#N/A)</div>
+          <div class="card-sub">Productos pendientes de alta o normalización en catálogo</div>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table id="tableCalidadNA">
+          <thead>
+            <tr>
+              <th>Fecha</th>
+              <th>Comprobante</th>
+              <th>Cliente</th>
+              <th>Producto</th>
+              <th>Agrupa</th>
+              <th>Apertura</th>
+              <th class="num">Neto</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Status Bar Footer -->
+  <footer class="status-bar">
+    <div id="statusInfo">Conectando al servidor…</div>
+    <div>Frigorífico Gorina S.A.I.C. · Tablero Comercial v2.8.2</div>
+  </footer>
+</div>
+
+<script src="/static/js/api.js?v=2.8.2"></script>
+<script src="/static/js/graficos.js?v=2.8.2"></script>
+<script src="/static/js/filtros.js?v=2.8.2"></script>
+<script src="/static/js/tablero.js?v=2.8.2"></script>
+</body>
+</html>

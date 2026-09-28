@@ -1,0 +1,2276 @@
+{
+ "2026-09-01": {
+  "trv": [
+   {
+    "h": "14:00",
+    "inn": 48,
+    "out": 0,
+    "occ": null,
+    "turno": 1
+   }
+  ],
+  "trv2": [],
+  "crane": [
+   {
+    "h": "04:00",
+    "inn": 0,
+    "out": 3,
+    "occ": null,
+    "turno": 2
+   },
+   {
+    "h": "05:00",
+    "inn": 0,
+    "out": 42,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "06:00",
+    "inn": 0,
+    "out": 44,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "07:00",
+    "inn": 0,
+    "out": 48,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "08:00",
+    "inn": 1,
+    "out": 11,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "09:00",
+    "inn": 24,
+    "out": 23,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "10:00",
+    "inn": 25,
+    "out": 10,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "11:00",
+    "inn": 11,
+    "out": 0,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "12:00",
+    "inn": 7,
+    "out": 0,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "13:00",
+    "inn": 39,
+    "out": 0,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "14:00",
+    "inn": 36,
+    "out": 0,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "15:00",
+    "inn": 37,
+    "out": 0,
+    "occ": null,
+    "turno": 1
+   }
+  ]
+ },
+ "2026-09-02": {
+  "trv": [
+   {
+    "h": "20:00",
+    "inn": 6516,
+    "out": 5550,
+    "occ": null,
+    "turno": 2
+   }
+  ],
+  "trv2": [],
+  "crane": [
+   {
+    "h": "05:00",
+    "inn": 0,
+    "out": 48,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "06:00",
+    "inn": 0,
+    "out": 44,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "07:00",
+    "inn": 0,
+    "out": 53,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "08:00",
+    "inn": 0,
+    "out": 30,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "09:00",
+    "inn": 0,
+    "out": 48,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "10:00",
+    "inn": 15,
+    "out": 7,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "11:00",
+    "inn": 18,
+    "out": 19,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "12:00",
+    "inn": 20,
+    "out": 10,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "13:00",
+    "inn": 8,
+    "out": 0,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "14:00",
+    "inn": 48,
+    "out": 0,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "15:00",
+    "inn": 49,
+    "out": 0,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "16:00",
+    "inn": 4,
+    "out": 0,
+    "occ": null,
+    "turno": 1
+   }
+  ]
+ },
+ "2026-09-03": {
+  "trv": [
+   {
+    "h": "06:00",
+    "inn": 310,
+    "out": 318,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "07:00",
+    "inn": 775,
+    "out": 801,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "08:00",
+    "inn": 726,
+    "out": 690,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "09:00",
+    "inn": 637,
+    "out": 569,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "10:00",
+    "inn": 743,
+    "out": 708,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "11:00",
+    "inn": 772,
+    "out": 689,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "12:00",
+    "inn": 640,
+    "out": 567,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "13:00",
+    "inn": 825,
+    "out": 571,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "14:00",
+    "inn": 779,
+    "out": 549,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "15:00",
+    "inn": 1002,
+    "out": 613,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "16:00",
+    "inn": 175,
+    "out": 94,
+    "occ": null,
+    "turno": 1
+   }
+  ],
+  "trv2": [],
+  "crane": [
+   {
+    "h": "05:00",
+    "inn": 0,
+    "out": 35,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "06:00",
+    "inn": 4,
+    "out": 42,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "07:00",
+    "inn": 19,
+    "out": 6,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "08:00",
+    "inn": 6,
+    "out": 0,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "09:00",
+    "inn": 4,
+    "out": 12,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "10:00",
+    "inn": 0,
+    "out": 1,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "11:00",
+    "inn": 4,
+    "out": 1,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "12:00",
+    "inn": 52,
+    "out": 0,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "13:00",
+    "inn": 21,
+    "out": 0,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "14:00",
+    "inn": 49,
+    "out": 0,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "15:00",
+    "inn": 1,
+    "out": 0,
+    "occ": null,
+    "turno": 1
+   }
+  ]
+ },
+ "2026-09-04": {
+  "trv": [
+   {
+    "h": "06:00",
+    "inn": 178,
+    "out": 323,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "07:00",
+    "inn": 631,
+    "out": 822,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "08:00",
+    "inn": 481,
+    "out": 585,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "09:00",
+    "inn": 623,
+    "out": 734,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "10:00",
+    "inn": 733,
+    "out": 812,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "11:00",
+    "inn": 613,
+    "out": 722,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "12:00",
+    "inn": 656,
+    "out": 524,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "13:00",
+    "inn": 692,
+    "out": 720,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "14:00",
+    "inn": 912,
+    "out": 699,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "15:00",
+    "inn": 800,
+    "out": 609,
+    "occ": null,
+    "turno": 1
+   }
+  ],
+  "trv2": [],
+  "crane": [
+   {
+    "h": "05:00",
+    "inn": 0,
+    "out": 39,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "06:00",
+    "inn": 0,
+    "out": 46,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "07:00",
+    "inn": 24,
+    "out": 18,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "08:00",
+    "inn": 6,
+    "out": 0,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "09:00",
+    "inn": 31,
+    "out": 2,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "10:00",
+    "inn": 32,
+    "out": 1,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "11:00",
+    "inn": 16,
+    "out": 1,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "12:00",
+    "inn": 17,
+    "out": 0,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "13:00",
+    "inn": 8,
+    "out": 0,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "14:00",
+    "inn": 27,
+    "out": 0,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "15:00",
+    "inn": 29,
+    "out": 0,
+    "occ": null,
+    "turno": 1
+   }
+  ]
+ },
+ "2026-09-07": {
+  "trv": [
+   {
+    "h": "06:00",
+    "inn": 239,
+    "out": 332,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "07:00",
+    "inn": 766,
+    "out": 854,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "08:00",
+    "inn": 683,
+    "out": 818,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "09:00",
+    "inn": 494,
+    "out": 659,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "10:00",
+    "inn": 556,
+    "out": 795,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "11:00",
+    "inn": 565,
+    "out": 668,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "12:00",
+    "inn": 521,
+    "out": 704,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "13:00",
+    "inn": 644,
+    "out": 794,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "14:00",
+    "inn": 792,
+    "out": 800,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "15:00",
+    "inn": 908,
+    "out": 842,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "16:00",
+    "inn": 212,
+    "out": 126,
+    "occ": null,
+    "turno": 1
+   }
+  ],
+  "trv2": [],
+  "crane": [
+   {
+    "h": "05:00",
+    "inn": 0,
+    "out": 44,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "06:00",
+    "inn": 0,
+    "out": 47,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "07:00",
+    "inn": 21,
+    "out": 18,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "08:00",
+    "inn": 1,
+    "out": 32,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "09:00",
+    "inn": 13,
+    "out": 31,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "10:00",
+    "inn": 39,
+    "out": 4,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "11:00",
+    "inn": 11,
+    "out": 0,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "12:00",
+    "inn": 21,
+    "out": 0,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "13:00",
+    "inn": 4,
+    "out": 0,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "14:00",
+    "inn": 25,
+    "out": 0,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "15:00",
+    "inn": 24,
+    "out": 0,
+    "occ": null,
+    "turno": 1
+   }
+  ]
+ },
+ "2026-09-08": {
+  "trv": [
+   {
+    "h": "06:00",
+    "inn": 160,
+    "out": 317,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "07:00",
+    "inn": 753,
+    "out": 807,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "08:00",
+    "inn": 603,
+    "out": 635,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "09:00",
+    "inn": 555,
+    "out": 613,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "10:00",
+    "inn": 708,
+    "out": 714,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "11:00",
+    "inn": 837,
+    "out": 755,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "12:00",
+    "inn": 642,
+    "out": 583,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "13:00",
+    "inn": 778,
+    "out": 687,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "14:00",
+    "inn": 925,
+    "out": 690,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "15:00",
+    "inn": 820,
+    "out": 510,
+    "occ": null,
+    "turno": 1
+   }
+  ],
+  "trv2": [],
+  "crane": [
+   {
+    "h": "05:00",
+    "inn": 0,
+    "out": 45,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "06:00",
+    "inn": 1,
+    "out": 45,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "07:00",
+    "inn": 11,
+    "out": 30,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "08:00",
+    "inn": 7,
+    "out": 2,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "09:00",
+    "inn": 41,
+    "out": 1,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "10:00",
+    "inn": 45,
+    "out": 0,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "11:00",
+    "inn": 26,
+    "out": 0,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "12:00",
+    "inn": 12,
+    "out": 0,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "13:00",
+    "inn": 7,
+    "out": 1,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "14:00",
+    "inn": 29,
+    "out": 0,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "15:00",
+    "inn": 34,
+    "out": 0,
+    "occ": null,
+    "turno": 1
+   }
+  ]
+ },
+ "2026-09-09": {
+  "trv": [
+   {
+    "h": "06:00",
+    "inn": 214,
+    "out": 309,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "07:00",
+    "inn": 638,
+    "out": 792,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "08:00",
+    "inn": 631,
+    "out": 688,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "09:00",
+    "inn": 511,
+    "out": 634,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "10:00",
+    "inn": 653,
+    "out": 748,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "11:00",
+    "inn": 731,
+    "out": 664,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "12:00",
+    "inn": 635,
+    "out": 603,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "13:00",
+    "inn": 407,
+    "out": 677,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "14:00",
+    "inn": 1060,
+    "out": 699,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "15:00",
+    "inn": 985,
+    "out": 546,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "16:00",
+    "inn": 85,
+    "out": 66,
+    "occ": null,
+    "turno": 1
+   }
+  ],
+  "trv2": [],
+  "crane": [
+   {
+    "h": "04:00",
+    "inn": 1,
+    "out": 0,
+    "occ": null,
+    "turno": 2
+   },
+   {
+    "h": "05:00",
+    "inn": 0,
+    "out": 42,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "06:00",
+    "inn": 0,
+    "out": 43,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "07:00",
+    "inn": 4,
+    "out": 35,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "08:00",
+    "inn": 0,
+    "out": 35,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "09:00",
+    "inn": 0,
+    "out": 25,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "10:00",
+    "inn": 12,
+    "out": 18,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "11:00",
+    "inn": 25,
+    "out": 20,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "12:00",
+    "inn": 25,
+    "out": 0,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "13:00",
+    "inn": 15,
+    "out": 0,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "14:00",
+    "inn": 40,
+    "out": 0,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "15:00",
+    "inn": 48,
+    "out": 0,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "16:00",
+    "inn": 19,
+    "out": 0,
+    "occ": null,
+    "turno": 1
+   }
+  ]
+ },
+ "2026-09-10": {
+  "trv": [
+   {
+    "h": "06:00",
+    "inn": 297,
+    "out": 356,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "07:00",
+    "inn": 756,
+    "out": 774,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "08:00",
+    "inn": 752,
+    "out": 746,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "09:00",
+    "inn": 652,
+    "out": 662,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "10:00",
+    "inn": 849,
+    "out": 785,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "11:00",
+    "inn": 856,
+    "out": 708,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "12:00",
+    "inn": 732,
+    "out": 606,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "13:00",
+    "inn": 822,
+    "out": 667,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "14:00",
+    "inn": 975,
+    "out": 606,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "15:00",
+    "inn": 509,
+    "out": 390,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "16:00",
+    "inn": 402,
+    "out": 159,
+    "occ": null,
+    "turno": 1
+   }
+  ],
+  "trv2": [],
+  "crane": [
+   {
+    "h": "05:00",
+    "inn": 1,
+    "out": 44,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "06:00",
+    "inn": 1,
+    "out": 49,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "07:00",
+    "inn": 22,
+    "out": 31,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "08:00",
+    "inn": 7,
+    "out": 30,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "09:00",
+    "inn": 0,
+    "out": 41,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "10:00",
+    "inn": 0,
+    "out": 39,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "11:00",
+    "inn": 16,
+    "out": 28,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "12:00",
+    "inn": 36,
+    "out": 9,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "13:00",
+    "inn": 12,
+    "out": 0,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "14:00",
+    "inn": 30,
+    "out": 0,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "15:00",
+    "inn": 37,
+    "out": 0,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "16:00",
+    "inn": 15,
+    "out": 0,
+    "occ": null,
+    "turno": 1
+   }
+  ]
+ },
+ "2026-09-11": {
+  "trv": [
+   {
+    "h": "06:00",
+    "inn": 235,
+    "out": 365,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "07:00",
+    "inn": 617,
+    "out": 826,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "08:00",
+    "inn": 678,
+    "out": 817,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "09:00",
+    "inn": 473,
+    "out": 577,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "10:00",
+    "inn": 656,
+    "out": 804,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "11:00",
+    "inn": 837,
+    "out": 807,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "12:00",
+    "inn": 725,
+    "out": 807,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "13:00",
+    "inn": 755,
+    "out": 693,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "14:00",
+    "inn": 862,
+    "out": 697,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "15:00",
+    "inn": 722,
+    "out": 500,
+    "occ": null,
+    "turno": 1
+   }
+  ],
+  "trv2": [],
+  "crane": [
+   {
+    "h": "05:00",
+    "inn": 0,
+    "out": 30,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "06:00",
+    "inn": 19,
+    "out": 21,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "07:00",
+    "inn": 32,
+    "out": 0,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "08:00",
+    "inn": 3,
+    "out": 0,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "09:00",
+    "inn": 22,
+    "out": 0,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "10:00",
+    "inn": 11,
+    "out": 0,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "11:00",
+    "inn": 21,
+    "out": 0,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "12:00",
+    "inn": 27,
+    "out": 0,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "13:00",
+    "inn": 6,
+    "out": 0,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "14:00",
+    "inn": 29,
+    "out": 0,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "15:00",
+    "inn": 21,
+    "out": 0,
+    "occ": null,
+    "turno": 1
+   }
+  ]
+ },
+ "2026-09-13": {
+  "trv": [],
+  "trv2": [],
+  "crane": [
+   {
+    "h": "04:00",
+    "inn": 0,
+    "out": 1,
+    "occ": null,
+    "turno": 2
+   }
+  ]
+ },
+ "2026-09-14": {
+  "trv": [
+   {
+    "h": "06:00",
+    "inn": 104,
+    "out": 180,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "07:00",
+    "inn": 717,
+    "out": 897,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "08:00",
+    "inn": 743,
+    "out": 891,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "09:00",
+    "inn": 884,
+    "out": 971,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "10:00",
+    "inn": 553,
+    "out": 616,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "11:00",
+    "inn": 746,
+    "out": 905,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "12:00",
+    "inn": 714,
+    "out": 841,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "13:00",
+    "inn": 106,
+    "out": 74,
+    "occ": null,
+    "turno": 1
+   }
+  ],
+  "trv2": [],
+  "crane": [
+   {
+    "h": "05:00",
+    "inn": 0,
+    "out": 44,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "06:00",
+    "inn": 0,
+    "out": 41,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "07:00",
+    "inn": 17,
+    "out": 27,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "08:00",
+    "inn": 16,
+    "out": 0,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "09:00",
+    "inn": 22,
+    "out": 0,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "10:00",
+    "inn": 24,
+    "out": 0,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "11:00",
+    "inn": 23,
+    "out": 0,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "12:00",
+    "inn": 24,
+    "out": 0,
+    "occ": null,
+    "turno": 1
+   }
+  ]
+ },
+ "2026-09-15": {
+  "trv": [
+   {
+    "h": "00:00",
+    "inn": 5932,
+    "out": 7109,
+    "occ": null,
+    "turno": 2
+   },
+   {
+    "h": "06:00",
+    "inn": 217,
+    "out": 356,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "07:00",
+    "inn": 675,
+    "out": 822,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "08:00",
+    "inn": 684,
+    "out": 754,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "09:00",
+    "inn": 576,
+    "out": 822,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "10:00",
+    "inn": 684,
+    "out": 956,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "11:00",
+    "inn": 788,
+    "out": 984,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "12:00",
+    "inn": 676,
+    "out": 811,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "13:00",
+    "inn": 793,
+    "out": 855,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "14:00",
+    "inn": 778,
+    "out": 750,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "15:00",
+    "inn": 62,
+    "out": 0,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "21:00",
+    "inn": 5932,
+    "out": 7109,
+    "occ": null,
+    "turno": 2
+   }
+  ],
+  "trv2": [],
+  "crane": [
+   {
+    "h": "04:00",
+    "inn": 0,
+    "out": 4,
+    "occ": null,
+    "turno": 2
+   },
+   {
+    "h": "05:00",
+    "inn": 0,
+    "out": 26,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "06:00",
+    "inn": 0,
+    "out": 36,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "07:00",
+    "inn": 0,
+    "out": 30,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "08:00",
+    "inn": 0,
+    "out": 15,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "09:00",
+    "inn": 0,
+    "out": 14,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "10:00",
+    "inn": 7,
+    "out": 25,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "11:00",
+    "inn": 8,
+    "out": 17,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "12:00",
+    "inn": 35,
+    "out": 14,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "13:00",
+    "inn": 8,
+    "out": 1,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "14:00",
+    "inn": 41,
+    "out": 0,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "15:00",
+    "inn": 56,
+    "out": 0,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "16:00",
+    "inn": 27,
+    "out": 0,
+    "occ": null,
+    "turno": 1
+   }
+  ]
+ },
+ "2026-09-16": {
+  "trv": [
+   {
+    "h": "04:00",
+    "inn": 0,
+    "out": 4,
+    "occ": null,
+    "turno": 2
+   },
+   {
+    "h": "06:00",
+    "inn": 124,
+    "out": 235,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "07:00",
+    "inn": 769,
+    "out": 906,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "08:00",
+    "inn": 691,
+    "out": 907,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "09:00",
+    "inn": 742,
+    "out": 889,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "10:00",
+    "inn": 765,
+    "out": 847,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "11:00",
+    "inn": 997,
+    "out": 1027,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "12:00",
+    "inn": 814,
+    "out": 709,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "13:00",
+    "inn": 850,
+    "out": 711,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "14:00",
+    "inn": 130,
+    "out": 46,
+    "occ": null,
+    "turno": 1
+   }
+  ],
+  "trv2": [],
+  "crane": [
+   {
+    "h": "04:00",
+    "inn": 0,
+    "out": 6,
+    "occ": null,
+    "turno": 2
+   },
+   {
+    "h": "05:00",
+    "inn": 0,
+    "out": 38,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "06:00",
+    "inn": 0,
+    "out": 42,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "07:00",
+    "inn": 3,
+    "out": 31,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "08:00",
+    "inn": 0,
+    "out": 28,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "09:00",
+    "inn": 29,
+    "out": 12,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "10:00",
+    "inn": 26,
+    "out": 10,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "11:00",
+    "inn": 25,
+    "out": 11,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "12:00",
+    "inn": 29,
+    "out": 0,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "13:00",
+    "inn": 6,
+    "out": 0,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "14:00",
+    "inn": 34,
+    "out": 0,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "15:00",
+    "inn": 5,
+    "out": 0,
+    "occ": null,
+    "turno": 1
+   }
+  ]
+ },
+ "2026-09-17": {
+  "trv": [
+   {
+    "h": "06:00",
+    "inn": 202,
+    "out": 256,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "07:00",
+    "inn": 827,
+    "out": 733,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "08:00",
+    "inn": 970,
+    "out": 750,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "09:00",
+    "inn": 720,
+    "out": 657,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "10:00",
+    "inn": 832,
+    "out": 714,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "11:00",
+    "inn": 836,
+    "out": 664,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "12:00",
+    "inn": 668,
+    "out": 498,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "13:00",
+    "inn": 931,
+    "out": 692,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "14:00",
+    "inn": 810,
+    "out": 564,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "15:00",
+    "inn": 635,
+    "out": 357,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "16:00",
+    "inn": 106,
+    "out": 53,
+    "occ": null,
+    "turno": 1
+   }
+  ],
+  "trv2": [],
+  "crane": [
+   {
+    "h": "04:00",
+    "inn": 0,
+    "out": 2,
+    "occ": null,
+    "turno": 2
+   },
+   {
+    "h": "05:00",
+    "inn": 0,
+    "out": 44,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "06:00",
+    "inn": 8,
+    "out": 33,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "07:00",
+    "inn": 18,
+    "out": 35,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "08:00",
+    "inn": 0,
+    "out": 21,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "09:00",
+    "inn": 0,
+    "out": 44,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "10:00",
+    "inn": 21,
+    "out": 23,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "11:00",
+    "inn": 21,
+    "out": 21,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "12:00",
+    "inn": 41,
+    "out": 9,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "13:00",
+    "inn": 16,
+    "out": 4,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "14:00",
+    "inn": 33,
+    "out": 0,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "15:00",
+    "inn": 25,
+    "out": 0,
+    "occ": null,
+    "turno": 1
+   }
+  ]
+ },
+ "2026-09-18": {
+  "trv": [
+   {
+    "h": "06:00",
+    "inn": 182,
+    "out": 392,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "07:00",
+    "inn": 600,
+    "out": 858,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "08:00",
+    "inn": 671,
+    "out": 684,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "09:00",
+    "inn": 606,
+    "out": 615,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "10:00",
+    "inn": 647,
+    "out": 745,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "11:00",
+    "inn": 762,
+    "out": 768,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "12:00",
+    "inn": 536,
+    "out": 540,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "13:00",
+    "inn": 837,
+    "out": 722,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "14:00",
+    "inn": 894,
+    "out": 532,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "15:00",
+    "inn": 98,
+    "out": 48,
+    "occ": null,
+    "turno": 1
+   }
+  ],
+  "trv2": [],
+  "crane": [
+   {
+    "h": "04:00",
+    "inn": 0,
+    "out": 2,
+    "occ": null,
+    "turno": 2
+   },
+   {
+    "h": "05:00",
+    "inn": 2,
+    "out": 41,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "06:00",
+    "inn": 2,
+    "out": 28,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "07:00",
+    "inn": 7,
+    "out": 29,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "08:00",
+    "inn": 11,
+    "out": 29,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "09:00",
+    "inn": 15,
+    "out": 35,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "10:00",
+    "inn": 37,
+    "out": 4,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "11:00",
+    "inn": 27,
+    "out": 0,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "12:00",
+    "inn": 19,
+    "out": 0,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "13:00",
+    "inn": 1,
+    "out": 6,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "14:00",
+    "inn": 33,
+    "out": 0,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "15:00",
+    "inn": 7,
+    "out": 0,
+    "occ": null,
+    "turno": 1
+   }
+  ]
+ },
+ "2026-09-21": {
+  "trv": [
+   {
+    "h": "06:00",
+    "inn": 172,
+    "out": 459,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "07:00",
+    "inn": 612,
+    "out": 1112,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "08:00",
+    "inn": 534,
+    "out": 953,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "09:00",
+    "inn": 391,
+    "out": 775,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "10:00",
+    "inn": 601,
+    "out": 964,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "11:00",
+    "inn": 714,
+    "out": 847,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "12:00",
+    "inn": 422,
+    "out": 513,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "13:00",
+    "inn": 807,
+    "out": 900,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "14:00",
+    "inn": 771,
+    "out": 731,
+    "occ": null,
+    "turno": 1
+   }
+  ],
+  "trv2": [],
+  "crane": [
+   {
+    "h": "05:00",
+    "inn": 0,
+    "out": 35,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "06:00",
+    "inn": 0,
+    "out": 50,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "07:00",
+    "inn": 0,
+    "out": 37,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "08:00",
+    "inn": 10,
+    "out": 5,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "09:00",
+    "inn": 48,
+    "out": 0,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "10:00",
+    "inn": 25,
+    "out": 0,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "11:00",
+    "inn": 17,
+    "out": 0,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "12:00",
+    "inn": 23,
+    "out": 0,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "13:00",
+    "inn": 1,
+    "out": 0,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "14:00",
+    "inn": 32,
+    "out": 0,
+    "occ": null,
+    "turno": 1
+   },
+   {
+    "h": "15:00",
+    "inn": 17,
+    "out": 0,
+    "occ": null,
+    "turno": 1
+   }
+  ]
+ }
+}

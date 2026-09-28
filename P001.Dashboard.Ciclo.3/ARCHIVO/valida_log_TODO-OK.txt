@@ -1,0 +1,63 @@
+Validador Gorina Ciclo3 - dom. 30/08/2026 14:13:53,44 
+================================================= 
+[OK] Ejecutando como Administrador 
+ 
+-- 1. CARPETAS ---------------------------------------- 
+[ OK ]   Sitio IIS : C:\Ciclo3\Servicios\dashboard 
+[ OK ]   Colector : C:\Ciclo3\Servicios\colector 
+ 
+-- 2. ARCHIVOS DEL SITIO (dashboard) ---------------------------------------- 
+[ OK ]   HTML dashboard : C:\Ciclo3\Servicios\dashboard\dashboard_operaciones.html 
+[ OK ]   datos.json : C:\Ciclo3\Servicios\dashboard\datos.json 
+[ OK ]   web.config (MIME .json) : C:\Ciclo3\Servicios\dashboard\web.config 
+  -- Validando JSON... 
+[ OK ]   datos.json tiene claves trv/crane 
+  Tamano: 12043 bytes 
+ 
+-- 3. ARCHIVOS DEL COLECTOR ---------------------------------------- 
+[ OK ]   colector.py : C:\Ciclo3\Servicios\colector\colector.py 
+[ OK ]   config.json : C:\Ciclo3\Servicios\colector\config.json 
+[ OK ]   colector.bat : C:\Ciclo3\Servicios\colector\colector.bat 
+[ OK ]   config.json out_path OK 
+ 
+-- 4. PYTHON ---------------------------------------- 
+[ OK ]   Python: Python 3.12.10 (C:\Users\gorinahostadmin\AppData\Local\Programs\Python\Python312\python.exe) 
+ 
+-- 5. IIS (Windows 10 Pro) ---------------------------------------- 
+[ OK ]   Servicio IIS (W3SVC) corriendo 
+[ OK ]   Sitio IIS 'Gorina Ciclo3' existe 
+  Bindings: 
+http/*:80:
+  PhysicalPath: 
+C:\Ciclo3\Servicios\dashboard
+ 
+-- 6. COLECTOR - PRUEBA --test ---------------------------------------- 
+  Ejecutando: C:\Users\gorinahostadmin\AppData\Local\Programs\Python\Python312\python.exe colector.py --test ... 
+2026-08-30 14:13:56,257 INFO    trv: 72 leídos · total 72 días
+2026-08-30 14:13:56,842 INFO    trv2: 0 leídos · total 0 días
+2026-08-30 14:13:57,449 INFO    crane: 65 leídos · total 65 días
+2026-08-30 14:13:57,449 INFO    Sistemas OK: 3/3 · fuente: sheet
+TEST OK · días en datos.json: trv=72, trv2=0, crane=65 (total 137)
+[ OK ]   colector --test OK 
+  --- Ultimas 5 lineas de logs/colector.log --- 
+2026-08-30 14:13:43,367 INFO    Sistemas OK: 3/3 ¶ú fuente: sheet
+2026-08-30 14:13:56,257 INFO    trv: 72 leÇðdos ¶ú total 72 dÇðas
+2026-08-30 14:13:56,842 INFO    trv2: 0 leÇðdos ¶ú total 0 dÇðas
+2026-08-30 14:13:57,449 INFO    crane: 65 leÇðdos ¶ú total 65 dÇðas
+2026-08-30 14:13:57,449 INFO    Sistemas OK: 3/3 ¶ú fuente: sheet
+ 
+-- 7. HTTP LOCALHOST ---------------------------------------- 
+[ OK ]   http://localhost/datos.json responde 200 
+ 
+-- 8. FIREWALL PUERTO 80 ---------------------------------------- 
+[ OK ]   Regla firewall 'Dashboard Gorina' existe 
+ 
+-- 9. TASK SCHEDULER ---------------------------------------- 
+[ OK ]   Tarea 'Gorina - Colector datos' existe 
+Estado:                                                Listo
+Estado de tarea programada:                            Habilitado
+ 
+-- 10. IP DE ESTA VM (para que otros entren) ---------------------------------------- 
+  IPs detectadas: 
+   Direcci¢n IPv4. . . . . . . . . . . . . . : 192.168.0.126
+  --- Desde tu PC/LAN usa la IPv4 de arriba: http://IP_VM/dashboard_operaciones.html --- 

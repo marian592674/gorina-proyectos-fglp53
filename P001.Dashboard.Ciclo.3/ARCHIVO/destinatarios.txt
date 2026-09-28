@@ -1,0 +1,14 @@
+﻿# Destinatarios Informes Ciclo 3 - LAB :8080
+# Formato: un mail por linea, sin comas, lineas con # son comentarios
+# Este archivo es solo guia: los mails reales se leen de config.json -> mail.weekly_to / monthly_to
+# Para agregar, editar C:\Ciclo3\Servicios\DASHBOARD\LAB\colector_test\config.json
+
+[SEMANAL - Viernes 18:00 - Asunto: Informe Semanal Ciclo 3]
+mariano.diaz@friggorina.com
+
+[MENSUAL - Ultimo dia mes 18:00 - Asunto: Informe Mensual Ciclo 3]
+mariano.diaz@friggorina.com
+
+# Para agregar otro: duplicar linea, ej:
+# juan.perez@friggorina.com
+# notificaciones@friggorina.com

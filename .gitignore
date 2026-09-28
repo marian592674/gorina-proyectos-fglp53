@@ -1,0 +1,71 @@
+# ==============================================================================
+# GitIgnore Maestro — Espacio de Proyectos Gorina (FGLP53)
+# ==============================================================================
+
+# Compilación y artefactos .NET / C#
+bin/
+obj/
+[Dd]ebug/
+[Rr]elease/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.dll
+*.pdb
+*.cache
+*.exe.config
+
+# Node.js y paquetes Frontend
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+*.egg-info/
+.pytest_cache/
+
+# Archivos de logs y depuración temporal
+*.log
+logs/
+*.tmp
+*.bak
+*.swp
+*.png
+*.jpg.tmp
+
+# Datos transitorios masivos o volcados locales de planillas operativas
+*.xlsx
+*.xlsm
+*.csv
+!appGalli/auditoria.csv
+
+# Backups y archivos de base de datos crudos
+*.sql.gz
+*.dump
+*.mdf
+*.ldf
+
+# Configuración y secretos del entorno local
+.env
+.env.local
+.env.*.local
+*.private.key
+
+# Archivos de IDE y sistema operativo
+.vscode/
+.idea/
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+.DS_Store

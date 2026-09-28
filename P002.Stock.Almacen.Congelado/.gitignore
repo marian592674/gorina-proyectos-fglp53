@@ -1,0 +1,34 @@
+# Artefactos de ejecucion y runtime
+*.log
+exportar_stock_packed.ps1
+index.html
+
+# Archivos historicos deprecados y carpetas de dumps temporales (1.7+ GB)
+_old/
+**/archivo/
+
+# Backups locales temporales
+_backup_*
+_old_backup_*
+**/*_PREVIO.*
+**/*_backup_*
+**/_old_backup_*
+*.bak_*
+**/*.bak_*
+
+# CSVs de stock (datos operativos diarios de deposito)
+STOCK/*.csv
+**/STOCK/*.csv
+
+# Archivos temporales de Office y SO
+~$*
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# Configuraciones locales de editor
+.vscode/
+.idea/
+
+# Scripts de trabajo temporal
+scratch/
