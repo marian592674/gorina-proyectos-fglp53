@@ -114,10 +114,12 @@ Operación: `PENDIENTE` → `PROCESADO` / `ERROR` (+ mensaje).
 - **2026-09-16:** Implementación de servicio y autorecuperación 24-7 para `Gorina.Api`.
   - Watchdog `vigilante_gorina_api.ps1` que verifica `/api/ping` y reinicia el proceso automáticamente si no responde.
   - Tarea programada en Windows `Gorina - GorinaPick API 24-7` configurada para inicio con Windows y chequeo periódico cada 1 minuto.
-- **2026-09-28:** Restauración y sincronización de catálogos maestros en MySQL.
-  - Causa detectada: Tras la migración de infraestructura a MySQL (`p003.pick.materiales.insumos`), las tablas de maestros (`centros_costo`, `equivalencias`, `centros_sap`, `clases_movimiento`) se encontraban con 0 registros. Al sincronizar los teléfonos móviles, la lista de CECOs quedaba vacía impidiendo crear nuevos picks.
-  - Se importaron los catálogos oficiales desde `Ejemplos/` a la base MySQL activa: 46 Centros de Costo (FAENA, DESPOSTADA, etc.), 76 Equivalencias QR, 2 Centros SAP y 7 Clases de Movimiento.
-  - Verificado el endpoint `/api/maestros` respondiendo 200 OK con la lista completa de CECOs y almacenes.
+- **2026-09-28:** Alta de usuarios operativos y blindaje de sesión (Fix 401 en Reserva de Picks).
+  - Causa detectada: Al migrar a MySQL, los usuarios de los operarios (`wmaidana`, `limpieza`) no estaban presentes en la tabla `usuarios` y sus sesiones previas no existían en MySQL. Al intentar iniciar un pick (`/api/operaciones/reservar`), el servidor devolvía 401 "No autorizado".
+  - Se crearon los usuarios `wmaidana` y `limpieza` en la base MySQL `p003.pick.materiales.insumos` con PIN 1234 y perfil `PICK`.
+  - Se actualizó el mensaje de error 401 en el servidor y en la app móvil (`nuevo_pick_screen.dart`) para indicar explícitamente *"Sesión vencida. Vuelva a iniciar sesión con su PIN"*.
+  - Compilado y publicado `Gorina.Api.exe` bajo servicio vigilante 24-7 con pruebas de login y reserva de orden exitosas.
+
 
 
 
